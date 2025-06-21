@@ -1,0 +1,253 @@
+name: On pull request
+
+on:
+  pull_request:
+    branches: ["main"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+#  run_tests:
+#    runs-on: ubuntu-latest
+#
+#    env:
+#      REGISTRY: ghcr.io
+#
+#    strategy:
+#      matrix:
+#        node-version: [22.16.0]
+#
+#    steps:
+#      - uses: actions/checkout@v4
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#          cache: "npm"
+#      - run: npm ci
+#
+#      - name: Log in to the Container registry
+#        uses: docker/login-action@v3
+#        with:
+#          registry: ${{ env.REGISTRY }}
+#          username: ${{ github.actor }}
+#          password: ${{ secrets.GITHUB_TOKEN }}
+#
+#      - name: Start Test services
+#        run: |
+#          echo "Starting services..."
+#          docker compose -f docker-compose.yaml -f docker-compose.test.yaml up -d
+#          docker ps
+#
+#      - name: Wait for Test Database
+#        run: |
+#          echo "Waiting for database to be ready..."
+#          for i in {1..30}; do
+#            nc -z localhost 5433 && echo "Test Database is ready" && break
+#            echo "Still waiting for test database..." && sleep 2
+#          done
+#
+#      - name: Run Test Database migrations
+#        env:
+#          DATABASE_HOST: localhost
+#          DATABASE_PORT: 5433
+#          POSTGRES_DB: alexandria_web_service_test_database
+#          POSTGRES_USER: test_user
+#          POSTGRES_PASSWORD: test_password
+#        run: |
+#          echo "Running Test Database migrations..."
+#          npx dotenv -e .env.test -- npx prisma migrate dev --name init
+#
+#      - name: Run Tests
+#        run: npm run test
+#
+#      - name: Stop Test services
+#        run: |
+#          echo "Stopping test services..."
+#          docker compose -f docker-compose.yaml -f docker-compose.test.yaml down
+
+  #  run_end_to_end_tests:
+  #    timeout-minutes: 60
+  #    runs-on: ubuntu-latest
+  #
+  #    strategy:
+  #      matrix:
+  #        node-version: [22.13.1]
+  #
+  #    steps:
+  #      - uses: actions/checkout@v4
+  #
+  #      # - name: Start services
+  #      # run: docker-compose up -d
+  #
+  #      - name: Use Node.js ${{ matrix.node-version }}
+  #        uses: actions/setup-node@v4
+  #        with:
+  #          node-version: ${{ matrix.node-version }}
+  #          cache: "npm"
+  #
+  #      - name: Install dependencies
+  #        run: npm ci
+  #
+  #      - name: Install Playwright Browsers
+  #        run: npx playwright install --with-deps
+  #
+  #      - name: Start Test services
+  #        run: |
+  #          echo "Starting services..."
+  #          docker compose -f docker-compose.test.yaml up -d
+  #          docker ps
+  #
+  #      - name: Wait for Test Database
+  #        run: |
+  #          echo "Waiting for database to be ready..."
+  #          for i in {1..30}; do
+  #            nc -z localhost 5433 && echo "Test Database is ready" && break
+  #            echo "Still waiting for test database..." && sleep 2
+  #          done
+  #
+  #      - name: Run Test Database migrations
+  #        env:
+  #          DATABASE_HOST: localhost
+  #          DATABASE_PORT: 5433
+  #          POSTGRES_DB: alexandria_web_service_test_database
+  #          POSTGRES_USER: test_user
+  #          POSTGRES_PASSWORD: test_password
+  #          OPENAI_API_KEY: test_key
+  #        run: |
+  #          echo "Running Test Database migrations..."
+  #          npx dotenv -e .env.test -- npx prisma migrate dev --name init
+  #
+  #      - name: Seed Test Database
+  #        run: |
+  #          echo "Seeding Test Database..."
+  #          npx dotenv -e .env.test npx prisma db seed
+  #
+  #      - name: Skip Auth0 consent
+  #        run: |
+  #          sudo echo "127.0.0.1 local.alexandria.code-sherpas.rocks" | sudo tee -a /etc/hosts
+  #
+  #    #  - name: Run Tests
+  #    #   run: |
+  #    #      echo "Running tests..."
+  #    #      npm run test:playwright
+  #
+  #    #  - name: Stop Test services
+  #    #   run: |
+  #    #      echo "Stopping test services..."
+  #    #      docker compose -f docker-compose.test.yaml down
+  #
+  #    # - uses: actions/upload-artifact@v4
+  #    #   if: ${{ !cancelled() }}
+  #    #   with:
+  #    #     name: playwright-report
+  #    #     path: playwright-report/
+  #    #     retention-days: 30
+
+#  check_code_format:
+#    runs-on: ubuntu-latest
+#
+#    strategy:
+#      matrix:
+#        node-version: [22.16.0]
+#
+#    steps:
+#      - uses: actions/checkout@v4
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#          cache: "npm"
+#      - run: npm ci
+#      - run: npm run format:check
+
+  run_linter:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.16.0]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run lint
+
+  build_application:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.16.0]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+
+#  test_database_migration:
+#    runs-on: ubuntu-latest
+#
+#    env:
+#      REGISTRY: ghcr.io
+#
+#    strategy:
+#      matrix:
+#        node-version: [22.16.0]
+#
+#    steps:
+#      - uses: actions/checkout@v4
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#          cache: "npm"
+#      - run: npm ci
+#
+#      - name: Log in to the Container registry
+#        uses: docker/login-action@v3
+#        with:
+#          registry: ${{ env.REGISTRY }}
+#          username: ${{ github.actor }}
+#          password: ${{ secrets.GITHUB_TOKEN }}
+#
+#      - name: Start services
+#        run: |
+#          echo "Starting services..."
+#          docker compose up -d
+#          docker ps
+#
+#      - name: Wait for Database
+#        run: |
+#          echo "Waiting for database to be ready..."
+#          for i in {1..30}; do
+#            nc -z localhost 5432 && echo "Database is ready" && break
+#            echo "Still waiting for database..." && sleep 2
+#          done
+#
+#      - name: Local database migration
+#        env:
+#          DATABASE_HOST: localhost
+#          DATABASE_PORT: 5432
+#          POSTGRES_DB: alexandria_web_service_database
+#          POSTGRES_USER: admin
+#          POSTGRES_PASSWORD: password
+#        run: |
+#          echo "Running database migrations..."
+#          npm run migrate:postgres
+#
+#      - name: Stop services
+#        run: |
+#          echo "Stopping services..."
+#          docker compose down
