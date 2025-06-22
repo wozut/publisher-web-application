@@ -183,6 +183,8 @@ jobs:
 
   build_application:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     strategy:
       matrix:
