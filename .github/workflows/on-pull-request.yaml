@@ -165,6 +165,8 @@ jobs:
 
   run_linter:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     strategy:
       matrix:
