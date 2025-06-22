@@ -2,6 +2,7 @@ import {Article} from "@/src/article/Article";
 
 
 export default async function ArticleView(article: Article) {
+  const authorId = authorRepository
   return (
     <div className="w-full flex flex-col place-items-center items-center gap-5">
       <h1 className="w-full lg:font-bold font-semibold lg:text-[64px] text-[30px] leading-tight text-charcoal-blue">
