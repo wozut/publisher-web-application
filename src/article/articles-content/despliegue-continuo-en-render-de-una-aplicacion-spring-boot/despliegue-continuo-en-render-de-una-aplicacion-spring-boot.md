@@ -99,7 +99,7 @@ Ahora que ya tenemos una URL para nuestras imágenes de Docker, vamos a configur
 Seleccionamos «Deploy an existing image from a registry».
 
 <figure>
-    <img src="/images/blog/articles/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/render-1.webp" alt="Render">
+    <img src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-1.webp" alt="Render">
     <figcaption>Fig.1 - Desplegando una imágen Docker de un <i>container registry</i></figcaption>
 </figure>
 
@@ -108,7 +108,7 @@ En el campo «Image URL» ponemos la URL con la etiqueta «latest»: ghcr.io/dgr
 Si tu repositorio es privado, tu _container registry_ también lo es y tendrás que añadir unas credenciales en tu cuenta de Render para que pueda descargarse las imágenes del _container registry_.
 
 <figure>
-    <img src="/images/blog/articles/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/render-2.webp" alt="Render">
+    <img src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-2.webp" alt="Render">
     <figcaption>Fig.2 - Configurando la URL de la imágen Docker</figcaption>
 </figure>
 
@@ -122,7 +122,7 @@ En la sección «Advanced»,
 Por último, creamos el servicio web.
 
 <figure>
-    <img src="/images/blog/articles/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/render-3.webp" alt="Render">
+    <img src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-3.webp" alt="Render">
     <figcaption>Fig.3 - Configuración avanzada de un servicio web en Render</figcaption>
 </figure>
 
@@ -131,7 +131,7 @@ Al cabo de unos minutos, el servicio web estará disponible en «https://guide-c
 Ahora ya podemos deplegar manualmente la versión «latest» de nuestra aplicación Spring Boot desde el _dashboard_ de Render.
 
 <figure>
-    <img src="/images/blog/articles/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/render-4.webp" alt="Render">
+    <img src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-4.webp" alt="Render">
     <figcaption>Fig.4 - Panel de control de un servicio web en Render</figcaption>
 </figure>
 
