@@ -1,6 +1,6 @@
 import {promises as fs} from "fs";
 import {ResultAsync} from "neverthrow";
-import {ObjectEncodingOptions, OpenMode, PathLike} from "node:fs";
+import {OpenMode, PathLike} from "node:fs";
 import {Abortable} from "node:events";
 import {FileHandle} from "fs/promises";
 import {AnyCustomError, CustomError} from "@/src/CustomError";
@@ -17,32 +17,24 @@ function toError(error: unknown): ReadFileError {
     }
 }
 
-export const safeReadFile: (
+export const safeReadFileAsString: (
     path: PathLike | FileHandle,
-    options?:
-        | (
-        & ObjectEncodingOptions
-        & Abortable
-        & {
+    options:
+        | ({
+        encoding: BufferEncoding;
         flag?: OpenMode | undefined;
-    }
-        )
-        | BufferEncoding
-        | null,
-) => ResultAsync<string | Buffer, AnyCustomError> = ResultAsync.fromThrowable(
+    } & Abortable)
+        | BufferEncoding,
+) => ResultAsync<string, AnyCustomError> = ResultAsync.fromThrowable(
     (
         path: PathLike | FileHandle,
-        options?:
-            | (
-            & ObjectEncodingOptions
-            & Abortable
-            & {
+        options:
+            | ({
+            encoding: BufferEncoding;
             flag?: OpenMode | undefined;
-        }
-            )
-            | BufferEncoding
-            | null,
-    ): Promise<string | Buffer> =>
+        } & Abortable)
+            | BufferEncoding,
+    ): Promise<string> =>
         fs.readFile(path, options),
     toError,
 );
