@@ -11,7 +11,6 @@ export function RenderMarkdownText({
 }): ReactElement {
   return (
     <Markdown
-      className={`text-black w-full`}
       remarkPlugins={[remarkUnwrapImages]}
       rehypePlugins={[rehypeRaw]}
       components={markUpLanguageToComponentMap}
