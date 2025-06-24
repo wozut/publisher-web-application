@@ -47,7 +47,7 @@ innovation, and continuous learning.
 ##### 1.1.1.1 Heading 5. Image figures
 
 <figure>
-    <img src="/images/featured-post.png" alt="San Juan Mountains">
+    <img src="/article/demo/images/featured-post.png" alt="San Juan Mountains">
     <figcaption>Fig.1 - Value of the Cybersecurity in the Growth & Safety of IT Exports</figcaption>
 </figure>
 
@@ -74,15 +74,13 @@ ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /spring-boot.jar ${0} ${@}"]
 EXPOSE 8080
 ```
 
-## Paragraphs and CTA
+## Paragraphs
 
 In cybersecurity, change is the only constant. New technologies, evolving attack vectors, and shifting regulatory
 landscapes demand that professionals remain adaptable and open to learning. A growth mindset enables individuals to
 embrace change as an opportunity for growth rather than a setback. Instead of becoming discouraged by unfamiliar
 challenges, those with a growth mindset approach them with curiosity and a willingness to learn. This adaptability is
 crucial in an industry where the only certainty is uncertainty.
-
-<div><cta></cta></div>
 
 ## Quotation blocks
 
@@ -120,10 +118,9 @@ Quotation blocks can include any other element and style as shown below:
 >       long very long very long very long very long very long very long very long very long
 >    2. Nested _ordered_ item 2
 >
-><cta></cta>
 > 
 ><figure>
->    <img src="/images/featured-post.png" alt="San Juan Mountains">
+>    <img src="/article/demo/images/featured-post.png" alt="San Juan Mountains">
 >    <figcaption>Fig.1 - Value of the Cybersecurity in the Growth & Safety of IT Exports</figcaption>
 ></figure>
 ><figure>
