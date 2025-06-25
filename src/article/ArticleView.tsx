@@ -30,9 +30,9 @@ export default async function ArticleView({article}: {article: Article}) {
                     </div>
                 </div>
                 <div className="w-full flex flex-col-reverse xl:flex-row gap-8">
-                    <div className="w-full min-w-[0%] blog-article">
+                    <article className="w-full min-w-[0%]">
                         <RenderMarkdownText markdownText={content}/>
-                    </div>
+                    </article>
                 </div>
             </div>
         )
