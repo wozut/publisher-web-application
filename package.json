@@ -10,6 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -36,6 +38,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
+    "eslint-config-prettier": "^10.1.5",
     "jest": "^30.0.2",
     "jest-environment-jsdom": "^30.0.2",
     "tailwindcss": "^4",
