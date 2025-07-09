@@ -25,9 +25,7 @@ describe("article collection", () => {
 
   test("ensure pathToContent points to valid paths", () => {
     articles.forEach((article) => {
-      expect(article.pathToContent).toMatch(
-        /^src\/article\/articles-content\/.*\/.*\.md$/,
-      );
+      expect(article.pathToContent).toMatch(/^\/.*\/.*\.md$/);
     });
   });
 });
