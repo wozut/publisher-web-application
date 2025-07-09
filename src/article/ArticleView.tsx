@@ -1,6 +1,6 @@
 import {Article} from "@/src/article/Article";
 import {authors} from "@/src/author/authors";
-import {safeReadFileAsString} from "@/libraries/safeReadFile";
+import {safeReadFileAsString} from "@/libraries/file-system/safeReadFileAsString";
 import {articlesDirectory} from "@/src/article/articlesDirectory";
 import {AnyCustomError} from "@/src/CustomError";
 import {ResultAsync} from "neverthrow";
