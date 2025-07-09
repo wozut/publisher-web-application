@@ -1,7 +1,7 @@
-import React, { ReactElement } from "react"
-import IntrinsicElements = React.JSX.IntrinsicElements
-import { ExtraProps } from "react-markdown"
-import { normalArticleTextStyle } from "./NormalArticleTextStyle"
+import React, { ReactElement } from "react";
+import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ExtraProps } from "react-markdown";
+import { normalArticleTextStyle } from "./NormalArticleTextStyle";
 
 export function LI({
   children,
@@ -12,8 +12,8 @@ export function LI({
   return (
     <li className={`${normalArticleTextStyle}`} {...rest}>
       {React.Children.toArray(children).map((child, index) =>
-        typeof child === "string" ? <span key={index}>{child}</span> : child
+        typeof child === "string" ? <span key={index}>{child}</span> : child,
       )}
     </li>
-  )
+  );
 }

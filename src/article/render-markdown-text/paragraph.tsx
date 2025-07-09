@@ -1,7 +1,7 @@
-import { ReactElement } from "react"
-import IntrinsicElements = React.JSX.IntrinsicElements
-import { ExtraProps } from "react-markdown"
-import {normalArticleTextStyle} from "@/src/article/render-markdown-text/NormalArticleTextStyle";
+import { ReactElement } from "react";
+import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ExtraProps } from "react-markdown";
+import { normalArticleTextStyle } from "@/src/article/render-markdown-text/NormalArticleTextStyle";
 
 export function Paragraph({
   children,
@@ -13,5 +13,5 @@ export function Paragraph({
     <p className={`${normalArticleTextStyle} mb-4`} {...rest}>
       {children}
     </p>
-  )
+  );
 }

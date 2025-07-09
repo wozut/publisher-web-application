@@ -1,6 +1,6 @@
-import { ReactElement } from "react"
-import IntrinsicElements = React.JSX.IntrinsicElements
-import { ExtraProps } from "react-markdown"
+import { ReactElement } from "react";
+import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ExtraProps } from "react-markdown";
 
 export function A({
   children,
@@ -19,5 +19,5 @@ export function A({
     >
       {children}
     </a>
-  )
+  );
 }

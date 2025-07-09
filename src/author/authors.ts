@@ -1,4 +1,4 @@
-import {Author} from "@/src/author/Author";
+import { Author } from "@/src/author/Author";
 
 export const authors: Author[] = [
   {
@@ -8,4 +8,4 @@ export const authors: Author[] = [
     otherNames: ["Celemendi"],
     pathToPortrait: "/author/images/david-gracia.png",
   },
-] as const
+] as const;

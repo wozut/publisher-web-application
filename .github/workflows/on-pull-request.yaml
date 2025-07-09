@@ -28,45 +28,45 @@ jobs:
           cache: "npm"
       - run: npm ci
 
-#      - name: Log in to the Container registry
-#        uses: docker/login-action@v3
-#        with:
-#          registry: ${{ env.REGISTRY }}
-#          username: ${{ github.actor }}
-#          password: ${{ secrets.GITHUB_TOKEN }}
+      #      - name: Log in to the Container registry
+      #        uses: docker/login-action@v3
+      #        with:
+      #          registry: ${{ env.REGISTRY }}
+      #          username: ${{ github.actor }}
+      #          password: ${{ secrets.GITHUB_TOKEN }}
 
-#      - name: Start Test services
-#        run: |
-#          echo "Starting services..."
-#          docker compose -f docker-compose.yaml -f docker-compose.test.yaml up -d
-#          docker ps
+      #      - name: Start Test services
+      #        run: |
+      #          echo "Starting services..."
+      #          docker compose -f docker-compose.yaml -f docker-compose.test.yaml up -d
+      #          docker ps
 
-#      - name: Wait for Test Database
-#        run: |
-#          echo "Waiting for database to be ready..."
-#          for i in {1..30}; do
-#            nc -z localhost 5433 && echo "Test Database is ready" && break
-#            echo "Still waiting for test database..." && sleep 2
-#          done
+      #      - name: Wait for Test Database
+      #        run: |
+      #          echo "Waiting for database to be ready..."
+      #          for i in {1..30}; do
+      #            nc -z localhost 5433 && echo "Test Database is ready" && break
+      #            echo "Still waiting for test database..." && sleep 2
+      #          done
 
-#      - name: Run Test Database migrations
-#        env:
-#          DATABASE_HOST: localhost
-#          DATABASE_PORT: 5433
-#          POSTGRES_DB: alexandria_web_service_test_database
-#          POSTGRES_USER: test_user
-#          POSTGRES_PASSWORD: test_password
-#        run: |
-#          echo "Running Test Database migrations..."
-#          npx dotenv -e .env.test -- npx prisma migrate dev --name init
+      #      - name: Run Test Database migrations
+      #        env:
+      #          DATABASE_HOST: localhost
+      #          DATABASE_PORT: 5433
+      #          POSTGRES_DB: alexandria_web_service_test_database
+      #          POSTGRES_USER: test_user
+      #          POSTGRES_PASSWORD: test_password
+      #        run: |
+      #          echo "Running Test Database migrations..."
+      #          npx dotenv -e .env.test -- npx prisma migrate dev --name init
 
       - name: Run Tests
         run: npm run test
 
-#      - name: Stop Test services
-#        run: |
-#          echo "Stopping test services..."
-#          docker compose -f docker-compose.yaml -f docker-compose.test.yaml down
+  #      - name: Stop Test services
+  #        run: |
+  #          echo "Stopping test services..."
+  #          docker compose -f docker-compose.yaml -f docker-compose.test.yaml down
 
   #  run_end_to_end_tests:
   #    timeout-minutes: 60
@@ -199,7 +199,6 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run build
-
 #  test_database_migration:
 #    runs-on: ubuntu-latest
 #

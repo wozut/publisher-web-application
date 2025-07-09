@@ -1,6 +1,6 @@
-import { ReactElement } from "react"
-import IntrinsicElements = React.JSX.IntrinsicElements
-import { ExtraProps } from "react-markdown"
+import { ReactElement } from "react";
+import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ExtraProps } from "react-markdown";
 
 export function UL({
   children,
@@ -12,5 +12,5 @@ export function UL({
     <ul className="list-disc list-outside ml-10 mb-4" {...rest}>
       {children}
     </ul>
-  )
+  );
 }

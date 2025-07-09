@@ -1,5 +1,5 @@
-import { CSSProperties } from "react"
-import { cb } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { CSSProperties } from "react";
+import { cb } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 /**
  Other styles that could apply:
@@ -23,5 +23,5 @@ import { cb } from "react-syntax-highlighter/dist/esm/styles/prism"
  */
 
 export const codeBlockStyle = cb as {
-  [key: string]: CSSProperties
-}
+  [key: string]: CSSProperties;
+};

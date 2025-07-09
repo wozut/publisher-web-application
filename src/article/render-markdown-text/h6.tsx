@@ -1,6 +1,6 @@
-import { ReactElement } from "react"
-import IntrinsicElements = React.JSX.IntrinsicElements
-import { ExtraProps } from "react-markdown"
+import { ReactElement } from "react";
+import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ExtraProps } from "react-markdown";
 
 export function H6({
   children,
@@ -15,5 +15,5 @@ export function H6({
     >
       {children}
     </h6>
-  )
+  );
 }

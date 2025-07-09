@@ -1,13 +1,13 @@
-import Markdown from "react-markdown"
-import { ReactElement } from "react"
-import rehypeRaw from "rehype-raw"
-import remarkUnwrapImages from "remark-unwrap-images"
-import { markUpLanguageToComponentMap } from "./markup-language-to-component-map"
+import Markdown from "react-markdown";
+import { ReactElement } from "react";
+import rehypeRaw from "rehype-raw";
+import remarkUnwrapImages from "remark-unwrap-images";
+import { markUpLanguageToComponentMap } from "./markup-language-to-component-map";
 
 export function RenderMarkdownText({
   markdownText,
 }: {
-  markdownText: string
+  markdownText: string;
 }): ReactElement {
   return (
     <Markdown
@@ -17,5 +17,5 @@ export function RenderMarkdownText({
     >
       {markdownText}
     </Markdown>
-  )
+  );
 }

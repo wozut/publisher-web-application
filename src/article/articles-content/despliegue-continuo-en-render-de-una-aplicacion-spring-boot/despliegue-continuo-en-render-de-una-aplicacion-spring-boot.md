@@ -1,10 +1,11 @@
 En este artículo voy a explicar cómo configurar el despliegue continuo en Render basado en imágenes [Docker](https://www.docker.com/ "Docker") de una aplicación [Spring Boot](https://spring.io/projects/spring-boot).
 
 Herramientas y tecnologías usadas en este ejemplo:
-- [GitHub](https://github.com/) para el [control de versiones](https://en.wikipedia.org/wiki/Version_control). 
+
+- [GitHub](https://github.com/) para el [control de versiones](https://en.wikipedia.org/wiki/Version_control).
 - [GitHub Actions](https://docs.github.com/en/actions) para gestionar el [despliegue continuo](https://en.wikipedia.org/wiki/Continuous_deployment).
 - [GitHub Packages](https://github.com/features/packages) para la publicación y descarga de imágenes [Docker](https://www.docker.com/).
-- [Gradle](https://gradle.org/), [Kotlin/JVM](https://kotlinlang.org/docs/jvm-get-started.html) y [Spring Boot](https://spring.io/projects/spring-boot) como tecnologías principales de la aplicación. Pero **lo que se explica en esta guía se puede aplicar a cualquier aplicación que se pueda _containerizar_**. 
+- [Gradle](https://gradle.org/), [Kotlin/JVM](https://kotlinlang.org/docs/jvm-get-started.html) y [Spring Boot](https://spring.io/projects/spring-boot) como tecnologías principales de la aplicación. Pero **lo que se explica en esta guía se puede aplicar a cualquier aplicación que se pueda _containerizar_**.
 - [Render](https://render.com/) como [PaaS](https://en.wikipedia.org/wiki/Platform_as_a_service) donde desplegar y ejecutar nuestro [servicio web](https://en.wikipedia.org/wiki/Web_service).
 
 Puedes encontrar el código de esta guía en [mi repositorio de GitHub](https://github.com/dgraciac/guide-cd-render-docker-based-spring-boot).
@@ -17,7 +18,7 @@ Generamos una aplicación Spring Boot en [spring initializr](https://start.sprin
 
 # _Containerización_
 
-Tenemos que _containerizar_ nuestra aplicación para que Render pueda ejecutarla como un contenedor de Docker. Para conseguirlo, necesitamos añadir un fichero Dockerfile apropiado para nuestra aplicación Spring Boot en el directorio raíz del repositorio. El siguiente fichero  Dockerfile servirá para alcanzar nuestro objetivo (si estás interesado/a en los detalles de este Dockerfile, puedes consultar la [guía oficial de Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker/) que he seguido).
+Tenemos que _containerizar_ nuestra aplicación para que Render pueda ejecutarla como un contenedor de Docker. Para conseguirlo, necesitamos añadir un fichero Dockerfile apropiado para nuestra aplicación Spring Boot en el directorio raíz del repositorio. El siguiente fichero Dockerfile servirá para alcanzar nuestro objetivo (si estás interesado/a en los detalles de este Dockerfile, puedes consultar la [guía oficial de Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker/) que he seguido).
 
 ```dockerfile
 FROM eclipse-temurin:17.0.6_10-jre-jammy
@@ -33,68 +34,68 @@ EXPOSE 8080
 
 Ahora que ya tenemos nuestro Dockerfile listo, vamos a publicar una imagen de Docker cada vez que ocurra un _push_ a la rama principal de nuestro repositorio. De eso se va a encargar un _workflow_ de GitHub Actions que situaremos en la ruta «.github/workflows/on-push-to-main.yaml».
 
-````yaml
+```yaml
 name: On push to main
 
 on:
- push:
-   branches:
-     - main
+  push:
+    branches:
+      - main
 
 jobs:
- deploy_to_production:
-   runs-on: ubuntu-latest
+  deploy_to_production:
+    runs-on: ubuntu-latest
 
-   env:
-     REGISTRY: ghcr.io
-     IMAGE_LATEST_URL: ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:latest
-     IMAGE_COMMIT_SHA_URL: ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:${{ github.sha }}
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_LATEST_URL: ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:latest
+      IMAGE_COMMIT_SHA_URL: ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:${{ github.sha }}
 
-   permissions:
-     contents: read
-     packages: write
+    permissions:
+      contents: read
+      packages: write
 
-   steps:
-     - name: Checkout
-       uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-     - name: Set up JDK
-       uses: actions/setup-java@v3
-       with:
-         distribution: 'temurin'
-         java-version: 17
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: 17
 
-     - name: Gradle build
-       run: ./gradlew build -x check
+      - name: Gradle build
+        run: ./gradlew build -x check
 
-     - name: Build Docker images
-       run: |
-         docker build \
-         --build-arg JAR_FILE=build/libs/guide-cd-render-docker-based-spring-boot-0.0.1-SNAPSHOT.jar \
-         -t ${{ env.IMAGE_LATEST_URL }} \
-         -t ${{ env.IMAGE_COMMIT_SHA_URL }} \
-         --platform=linux/amd64 \
-         .
+      - name: Build Docker images
+        run: |
+          docker build \
+          --build-arg JAR_FILE=build/libs/guide-cd-render-docker-based-spring-boot-0.0.1-SNAPSHOT.jar \
+          -t ${{ env.IMAGE_LATEST_URL }} \
+          -t ${{ env.IMAGE_COMMIT_SHA_URL }} \
+          --platform=linux/amd64 \
+          .
 
-     - name: Log in to the Container registry
-       uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
-       with:
-         registry: ${{ env.REGISTRY }}
-         username: ${{ github.actor }}
-         password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-     - name: Push image with "commit sha" version
-       run: docker push ${{ env.IMAGE_COMMIT_SHA_URL }}
+      - name: Push image with "commit sha" version
+        run: docker push ${{ env.IMAGE_COMMIT_SHA_URL }}
 
-     - name: Push image with "latest" version
-       run: docker push ${{ env.IMAGE_LATEST_URL }}
-````
+      - name: Push image with "latest" version
+        run: docker push ${{ env.IMAGE_LATEST_URL }}
+```
 
 Subimos este cambio a la rama principal y esto iniciará un [_workflow run_](https://github.com/dgraciac/guide-cd-render-docker-based-spring-boot/actions) que publicará una nueva imágen de Docker de la aplicación Spring Boot en el [_container registry de nuestra cuenta de GitHub_](https://github.com/dgraciac?tab=packages) con dos etiquetas: «latest» y otra con el _commit_ SHA.
 
 # Conectar Render a nuestras imágenes de Docker
 
-Ahora que ya tenemos una URL para nuestras imágenes de Docker, vamos a configurar un servicio web en Render y vamos  a conectarlo a «ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:latest».
+Ahora que ya tenemos una URL para nuestras imágenes de Docker, vamos a configurar un servicio web en Render y vamos a conectarlo a «ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:latest».
 
 Seleccionamos «Deploy an existing image from a registry».
 
@@ -112,7 +113,7 @@ Si tu repositorio es privado, tu _container registry_ también lo es y tendrás 
     <figcaption>Fig.2 - Configurando la URL de la imágen Docker</figcaption>
 </figure>
 
-Elegimos nombre del servicio web, región geográfica e  «Instance Type».
+Elegimos nombre del servicio web, región geográfica e «Instance Type».
 
 En la sección «Advanced»,
 

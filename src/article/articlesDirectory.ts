@@ -1,1 +1,1 @@
-export const articlesDirectory = "./src/article/articles-content"
+export const articlesDirectory = "./src/article/articles-content";

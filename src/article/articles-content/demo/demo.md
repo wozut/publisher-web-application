@@ -19,30 +19,30 @@ innovation, and continuous learning.
 - **Item** _1_ very long very long very long very long very long very long very long very long very long very long very
   long very long very long very long very long very long very long
 - _Item_ **2**
-    - Nested **unordered** item 1 very long very long very long very long very long very long very long very long very
-      long very long very long very long very long very long very long very long very long
-    - Nested _unordered_ item 2
+  - Nested **unordered** item 1 very long very long very long very long very long very long very long very long very
+    long very long very long very long very long very long very long very long very long
+  - Nested _unordered_ item 2
 - **Item** _3_
-    1. Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
-       long very long very long very long very long very long very long very long very long
-    2. Nested _ordered_ item 2 very long very long very long very long very long very long very long very long very long
-       very long very long very long very long very long very long very long very long
+  1. Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
+     long very long very long very long very long very long very long very long very long
+  2. Nested _ordered_ item 2 very long very long very long very long very long very long very long very long very long
+     very long very long very long very long very long very long very long very long
 - Item 4
 
 #### 1.1.1 Heading 4. Lists: first level ordered, mixed second level.
 
 1. Item 1 **sad** sa sa _dsadf_ adsf
-    1. Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
-       long very long very long very long very long very long very long very long very long
-    2. Nested _ordered_ item 2
-2. _Item_ **2**
-    - Nested **unordered** item 1 very long very long very long very long very long very long very long very long very
+   1. Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
       long very long very long very long very long very long very long very long very long
-    - Nested _unordered_ item 2
+   2. Nested _ordered_ item 2
+2. _Item_ **2**
+   - Nested **unordered** item 1 very long very long very long very long very long very long very long very long very
+     long very long very long very long very long very long very long very long very long
+   - Nested _unordered_ item 2
 3. **Item** _3_
-    1. Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
-       long very long very long very long very long very long very long very long very long
-    2. Nested _ordered_ item 2
+   1. Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
+      long very long very long very long very long very long very long very long very long
+   2. Nested _ordered_ item 2
 
 ##### 1.1.1.1 Heading 5. Image figures
 
@@ -96,36 +96,37 @@ The purpose of this paragraph is to see the space between a quotation and the ne
 Quotation blocks can include any other element and style as shown below:
 
 > [OAuth2.0](https://en.wikipedia.org/wiki/OAuth) is a **security standard** that is `used` in many _applications_
+>
 > ```dockerfile
 > FROM eclipse-temurin:17.0.6_10-jre-jammy
-> 
+>
 > VOLUME /tmp
 > ARG JAR_FILE
 > COPY ${JAR_FILE} spring-boot.jar
 > ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /spring-boot.jar ${0} ${@}"]
 > EXPOSE 8080
 > ```
->1. Item 1 **sad** sa sa _dsadf_ adsf
->    1. Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
->       long very long very long very long very long very long very long very long very long
->    2. Nested _ordered_ item 2
->2. _Item_ **2**
->    - Nested **unordered** item 1 very long very long very long very long very long very long very long very long very
->      long very long very long very long very long very long very long very long very long
->    - Nested _unordered_ item 2
->3. **Item** _3_
->    1. Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
->       long very long very long very long very long very long very long very long very long
->    2. Nested _ordered_ item 2
 >
-> 
-><figure>
+> 1.  Item 1 **sad** sa sa _dsadf_ adsf
+>     1.  Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
+>         long very long very long very long very long very long very long very long very long
+>     2.  Nested _ordered_ item 2
+> 2.  _Item_ **2**
+>     - Nested **unordered** item 1 very long very long very long very long very long very long very long very long very
+>       long very long very long very long very long very long very long very long very long
+>     - Nested _unordered_ item 2
+> 3.  **Item** _3_
+>     1.  Nested **ordered** item 1 very long very long very long very long very long very long very long very long very
+>         long very long very long very long very long very long very long very long very long
+>     2.  Nested _ordered_ item 2
+>
+> <figure>
 >    <img src="/article/demo/images/featured-post.png" alt="San Juan Mountains">
 >    <figcaption>Fig.1 - Value of the Cybersecurity in the Growth & Safety of IT Exports</figcaption>
-></figure>
-><figure>
+> </figure>
+> <figure>
 >    <video src="https://convertiaback.com/wp-content/uploads/2024/10/home-casos-exito.mp4"></video>
 >    <figcaption>Video.1 - Value of the Cybersecurity in the Growth & Safety of IT Exports sad sad df dsaf dafas df saf saf adsf adsdsa fdsaf daf dff adsfsasa fasf asf</figcaption>
-></figure>
+> </figure>
 
 The quotation ends just above this line.

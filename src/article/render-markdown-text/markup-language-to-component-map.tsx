@@ -1,39 +1,38 @@
-import { Components, ExtraProps } from "react-markdown"
-import { Paragraph } from "./paragraph"
-import { H1 } from "./h1"
-import { H2 } from "./h2"
-import { H3 } from "./h3"
-import { H4 } from "./h4"
-import { UL } from "./ul"
-import { A } from "./a"
-import { Pre } from "./pre"
-import { OL } from "./ol"
-import { Blockquote } from "./blockquote"
-import { LI } from "./li"
-import { Code } from "./code"
-import { Strong } from "./strong"
-import { ClassAttributes, HTMLAttributes, ReactElement } from "react"
-import { H5 } from "./h5"
-import { H6 } from "./h6"
-import { IMG } from "./img"
-import { Video } from "./video"
-import {Emphasis} from "@/src/article/render-markdown-text/Emphasis";
-import { Figure } from "./figure"
-import {FigCaption} from "@/src/article/render-markdown-text/FigCaption";
-
+import { Components, ExtraProps } from "react-markdown";
+import { Paragraph } from "./paragraph";
+import { H1 } from "./h1";
+import { H2 } from "./h2";
+import { H3 } from "./h3";
+import { H4 } from "./h4";
+import { UL } from "./ul";
+import { A } from "./a";
+import { Pre } from "./pre";
+import { OL } from "./ol";
+import { Blockquote } from "./blockquote";
+import { LI } from "./li";
+import { Code } from "./code";
+import { Strong } from "./strong";
+import { ClassAttributes, HTMLAttributes, ReactElement } from "react";
+import { H5 } from "./h5";
+import { H6 } from "./h6";
+import { IMG } from "./img";
+import { Video } from "./video";
+import { Emphasis } from "@/src/article/render-markdown-text/Emphasis";
+import { Figure } from "./figure";
+import { FigCaption } from "@/src/article/render-markdown-text/FigCaption";
 
 type Props = ClassAttributes<HTMLElement> &
   HTMLAttributes<HTMLElement> &
-  ExtraProps
-const strong = (props: Props): ReactElement => <Strong {...props} />
-const emphasis = (props: Props): ReactElement => <Emphasis {...props} />
+  ExtraProps;
+const strong = (props: Props): ReactElement => <Strong {...props} />;
+const emphasis = (props: Props): ReactElement => <Emphasis {...props} />;
 
 // type ComponentsExtended = {
 //   cta: typeof CTA;
 // };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type ComponentsExtended = Record<string, (props: any) => ReactElement>
+type ComponentsExtended = Record<string, (props: any) => ReactElement>;
 
 export const markUpLanguageToComponentMap: Components & ComponentsExtended = {
   p: (props) => <Paragraph {...props} />,
@@ -58,4 +57,4 @@ export const markUpLanguageToComponentMap: Components & ComponentsExtended = {
   video: (props) => <Video {...props} />,
   figure: (props) => <Figure {...props} />,
   figcaption: (props) => <FigCaption {...props} />,
-}
+};

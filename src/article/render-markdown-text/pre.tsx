@@ -1,9 +1,9 @@
-import { ReactElement, Children, isValidElement, ComponentProps } from "react"
-import IntrinsicElements = React.JSX.IntrinsicElements
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import { ExtraProps } from "react-markdown"
-import { codeBlockStyle } from "./code-block/code-block-style"
-import { Code } from "./code"
+import { ReactElement, Children, isValidElement, ComponentProps } from "react";
+import IntrinsicElements = React.JSX.IntrinsicElements;
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { ExtraProps } from "react-markdown";
+import { codeBlockStyle } from "./code-block/code-block-style";
+import { Code } from "./code";
 
 export function Pre({
   children,
@@ -20,10 +20,10 @@ export function Pre({
         fontFamily: "'JetBrains Mono', monospace",
         lineHeight: "1.5",
         fontSize: "1rem",
-      }
+      };
 
-      const props = child.props as { className: string; children: string }
-      const language = props.className?.split("language-")[1]
+      const props = child.props as { className: string; children: string };
+      const language = props.className?.split("language-")[1];
 
       return (
         <div
@@ -48,11 +48,11 @@ export function Pre({
             {String(props.children).replace(/\n$/, "")}
           </SyntaxHighlighter>
         </div>
-      )
+      );
     }
 
-    return child
-  })
+    return child;
+  });
 
-  return <pre>{mappedChildren}</pre>
+  return <pre>{mappedChildren}</pre>;
 }

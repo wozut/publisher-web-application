@@ -1,7 +1,7 @@
-import { ReactElement } from "react"
-import { ExtraProps } from "react-markdown"
+import { ReactElement } from "react";
+import { ExtraProps } from "react-markdown";
 
-import IntrinsicElements = React.JSX.IntrinsicElements
+import IntrinsicElements = React.JSX.IntrinsicElements;
 
 export function Blockquote({
   children,
@@ -31,5 +31,5 @@ export function Blockquote({
         ”
       </span>
     </blockquote>
-  )
+  );
 }
