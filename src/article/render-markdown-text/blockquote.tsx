@@ -5,10 +5,6 @@ import IntrinsicElements = React.JSX.IntrinsicElements;
 
 export function Blockquote({
   children,
-  className,
-  style,
-  node,
-  ...rest
 }: IntrinsicElements["blockquote"] & ExtraProps): ReactElement {
   return (
     <blockquote className="flex flex-row w-full gap-1 mb-4">

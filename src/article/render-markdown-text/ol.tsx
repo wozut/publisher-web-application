@@ -4,8 +4,6 @@ import { ExtraProps } from "react-markdown";
 
 export function OL({
   children,
-  style,
-  node,
   ...rest
 }: IntrinsicElements["ol"] & ExtraProps): ReactElement {
   return (

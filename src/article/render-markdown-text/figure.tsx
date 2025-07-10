@@ -4,8 +4,6 @@ import { ExtraProps } from "react-markdown";
 
 export function Figure({
   children,
-  style,
-  node,
   ...rest
 }: IntrinsicElements["figure"] & ExtraProps): ReactElement {
   return (

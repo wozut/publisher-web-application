@@ -4,8 +4,6 @@ import { ExtraProps } from "react-markdown";
 
 export function FigCaption({
   children,
-  style,
-  node,
   ...rest
 }: IntrinsicElements["figcaption"] & ExtraProps): ReactElement {
   return (

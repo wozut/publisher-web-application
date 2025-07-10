@@ -4,8 +4,6 @@ import { ExtraProps } from "react-markdown";
 
 export function H6({
   children,
-  style,
-  node,
   ...rest
 }: IntrinsicElements["h6"] & ExtraProps): ReactElement {
   return (

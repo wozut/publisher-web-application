@@ -9,8 +9,6 @@ const jetBrainsMono: NextFont = JetBrains_Mono({ subsets: ["latin"] });
 
 export function Code({
   children,
-  style,
-  node,
   ...rest
 }: IntrinsicElements["code"] & ExtraProps): ReactElement {
   return (

@@ -3,11 +3,8 @@ import { ReactElement } from "react";
 import IntrinsicElements = React.JSX.IntrinsicElements;
 
 export function IMG({
-  children,
   src,
   alt,
-  className,
-  node,
   width,
   height,
   ...rest

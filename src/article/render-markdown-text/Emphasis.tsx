@@ -4,8 +4,6 @@ import { ExtraProps } from "react-markdown";
 
 export function Emphasis({
   children,
-  className,
-  node,
   ...rest
 }: IntrinsicElements["em"] & ExtraProps): ReactElement {
   return (

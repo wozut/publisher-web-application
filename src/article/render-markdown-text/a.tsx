@@ -6,8 +6,6 @@ export function A({
   children,
   href,
   target = "_blank",
-  node,
-  style,
   ...rest
 }: IntrinsicElements["a"] & ExtraProps): ReactElement {
   return (

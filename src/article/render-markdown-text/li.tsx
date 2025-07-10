@@ -5,8 +5,6 @@ import { normalArticleTextStyle } from "./NormalArticleTextStyle";
 
 export function LI({
   children,
-  style,
-  node,
   ...rest
 }: IntrinsicElements["li"] & ExtraProps): ReactElement {
   return (

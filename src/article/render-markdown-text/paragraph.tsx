@@ -5,8 +5,6 @@ import { normalArticleTextStyle } from "@/src/article/render-markdown-text/Norma
 
 export function Paragraph({
   children,
-  style,
-  node,
   ...rest
 }: IntrinsicElements["p"] & ExtraProps): ReactElement {
   return (

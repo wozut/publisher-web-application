@@ -4,8 +4,6 @@ import { ExtraProps } from "react-markdown";
 
 export function UL({
   children,
-  style,
-  node,
   ...rest
 }: IntrinsicElements["ul"] & ExtraProps): ReactElement {
   return (

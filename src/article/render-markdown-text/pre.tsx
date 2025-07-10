@@ -7,9 +7,6 @@ import { Code } from "./code";
 
 export function Pre({
   children,
-  className,
-  node,
-  ...rest
 }: IntrinsicElements["pre"] & ExtraProps): ReactElement {
   const mappedChildren = Children.map(children, (child) => {
     if (
