@@ -1,5 +1,4 @@
-import { ReactElement } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import { AnchorHTMLAttributes, ClassAttributes, ReactElement } from "react";
 import { ExtraProps } from "react-markdown";
 
 export function A({
@@ -7,7 +6,9 @@ export function A({
   href,
   target = "_blank",
   ...rest
-}: IntrinsicElements["a"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLAnchorElement> &
+  AnchorHTMLAttributes<HTMLAnchorElement> &
+  ExtraProps): ReactElement {
   return (
     <a
       className={"font-semibold text-charcoal-blue hover:drop-shadow-cs"}

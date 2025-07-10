@@ -1,11 +1,11 @@
-import { ReactElement } from "react";
+import { BlockquoteHTMLAttributes, ClassAttributes, ReactElement } from "react";
 import { ExtraProps } from "react-markdown";
-
-import IntrinsicElements = React.JSX.IntrinsicElements;
 
 export function Blockquote({
   children,
-}: IntrinsicElements["blockquote"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLQuoteElement> &
+  BlockquoteHTMLAttributes<HTMLQuoteElement> &
+  ExtraProps): ReactElement {
   return (
     <blockquote className="flex flex-row w-full gap-1 mb-4">
       <span
