@@ -1,10 +1,11 @@
 import { ExtraProps } from "react-markdown";
-import { ReactElement } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ClassAttributes, ReactElement, VideoHTMLAttributes } from "react";
 
 export function Video({
   src,
-}: IntrinsicElements["video"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLVideoElement> &
+  VideoHTMLAttributes<HTMLVideoElement> &
+  ExtraProps): ReactElement {
   return (
     <video src={src} autoPlay controls className="rounded-lg object-fit mb-1" />
   );

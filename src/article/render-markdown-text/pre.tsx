@@ -1,5 +1,11 @@
-import { ReactElement, Children, isValidElement, ComponentProps } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import {
+  ReactElement,
+  Children,
+  isValidElement,
+  ComponentProps,
+  ClassAttributes,
+  HTMLAttributes,
+} from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { ExtraProps } from "react-markdown";
 import { codeBlockStyle } from "./code-block/code-block-style";
@@ -7,7 +13,9 @@ import { Code } from "./code";
 
 export function Pre({
   children,
-}: IntrinsicElements["pre"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLPreElement> &
+  HTMLAttributes<HTMLPreElement> &
+  ExtraProps): ReactElement {
   const mappedChildren = Children.map(children, (child) => {
     if (
       isValidElement(child) &&

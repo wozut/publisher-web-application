@@ -1,11 +1,12 @@
-import { ReactElement } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ClassAttributes, HTMLAttributes, ReactElement } from "react";
 import { ExtraProps } from "react-markdown";
 
 export function Strong({
   children,
   ...rest
-}: IntrinsicElements["strong"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLElement> &
+  HTMLAttributes<HTMLElement> &
+  ExtraProps): ReactElement {
   return (
     <strong className="font-bold" {...rest}>
       {children}

@@ -1,12 +1,13 @@
-import React, { ReactElement } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import React, { ClassAttributes, LiHTMLAttributes, ReactElement } from "react";
 import { ExtraProps } from "react-markdown";
 import { normalArticleTextStyle } from "./NormalArticleTextStyle";
 
 export function LI({
   children,
   ...rest
-}: IntrinsicElements["li"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLLIElement> &
+  LiHTMLAttributes<HTMLLIElement> &
+  ExtraProps): ReactElement {
   return (
     <li className={`${normalArticleTextStyle}`} {...rest}>
       {React.Children.toArray(children).map((child, index) =>

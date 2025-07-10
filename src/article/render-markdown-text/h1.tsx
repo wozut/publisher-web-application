@@ -1,11 +1,12 @@
-import { ReactElement } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ClassAttributes, HTMLAttributes, ReactElement } from "react";
 import { ExtraProps } from "react-markdown";
 
 export function H1({
   children,
   ...rest
-}: IntrinsicElements["h1"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLHeadingElement> &
+  HTMLAttributes<HTMLHeadingElement> &
+  ExtraProps): ReactElement {
   return (
     <h1
       className="font-semibold text-[2.4rem] leading-[2.5rem] mb-4 mt-9"

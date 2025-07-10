@@ -1,11 +1,12 @@
-import { ReactElement } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ClassAttributes, HTMLAttributes, ReactElement } from "react";
 import { ExtraProps } from "react-markdown";
 
 export function FigCaption({
   children,
   ...rest
-}: IntrinsicElements["figcaption"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLElement> &
+  HTMLAttributes<HTMLElement> &
+  ExtraProps): ReactElement {
   return (
     <figcaption className="font-light text-sm leading-normal" {...rest}>
       {children}

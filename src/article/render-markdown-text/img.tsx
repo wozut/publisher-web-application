@@ -1,6 +1,5 @@
 import { ExtraProps } from "react-markdown";
-import { ReactElement } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ClassAttributes, ImgHTMLAttributes, ReactElement } from "react";
 
 export function IMG({
   src,
@@ -8,7 +7,9 @@ export function IMG({
   width,
   height,
   ...rest
-}: IntrinsicElements["img"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLImageElement> &
+  ImgHTMLAttributes<HTMLImageElement> &
+  ExtraProps): ReactElement {
   return (
     <img
       src={src}

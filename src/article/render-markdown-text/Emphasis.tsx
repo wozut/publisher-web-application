@@ -1,11 +1,12 @@
-import { ReactElement } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ClassAttributes, HTMLAttributes, ReactElement } from "react";
 import { ExtraProps } from "react-markdown";
 
 export function Emphasis({
   children,
   ...rest
-}: IntrinsicElements["em"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLElement> &
+  HTMLAttributes<HTMLElement> &
+  ExtraProps): ReactElement {
   return (
     <em className="italic" {...rest}>
       {children}

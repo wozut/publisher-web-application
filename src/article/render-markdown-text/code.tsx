@@ -1,5 +1,4 @@
-import { ReactElement } from "react";
-import IntrinsicElements = React.JSX.IntrinsicElements;
+import { ClassAttributes, HTMLAttributes, ReactElement } from "react";
 import { ExtraProps } from "react-markdown";
 import { NextFont } from "next/dist/compiled/@next/font";
 import { JetBrains_Mono } from "next/font/google";
@@ -10,7 +9,9 @@ const jetBrainsMono: NextFont = JetBrains_Mono({ subsets: ["latin"] });
 export function Code({
   children,
   ...rest
-}: IntrinsicElements["code"] & ExtraProps): ReactElement {
+}: ClassAttributes<HTMLElement> &
+  HTMLAttributes<HTMLElement> &
+  ExtraProps): ReactElement {
   return (
     <code
       {...rest}
