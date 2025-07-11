@@ -27,12 +27,7 @@ type Props = ClassAttributes<HTMLElement> &
 const strong = (props: Props): ReactElement => <Strong {...props} />;
 const emphasis = (props: Props): ReactElement => <Emphasis {...props} />;
 
-// type ComponentsExtended = {
-//   cta: typeof CTA;
-// };
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type ComponentsExtended = Record<string, (props: any) => ReactElement>;
+type ComponentsExtended = Record<string, (props: never) => ReactElement>;
 
 export const markUpLanguageToComponentMap: Components & ComponentsExtended = {
   p: (props) => <Paragraph {...props} />,
