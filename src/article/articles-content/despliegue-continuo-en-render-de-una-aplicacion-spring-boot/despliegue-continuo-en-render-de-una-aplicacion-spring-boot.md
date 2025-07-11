@@ -1,3 +1,5 @@
+# Despliegue continuo en Render de una aplicación Spring Boot
+
 En este artículo voy a explicar cómo configurar el despliegue continuo en Render basado en imágenes [Docker](https://www.docker.com/ "Docker") de una aplicación [Spring Boot](https://spring.io/projects/spring-boot).
 
 Herramientas y tecnologías usadas en este ejemplo:
@@ -10,13 +12,13 @@ Herramientas y tecnologías usadas en este ejemplo:
 
 Puedes encontrar el código de esta guía en [mi repositorio de GitHub](https://github.com/dgraciac/guide-cd-render-docker-based-spring-boot).
 
-# Crear un repositorio GitHub donde subir el código
+## Crear un repositorio GitHub donde subir el código
 
 Empecemos por lo básico. Creamos un repositorio de GitHub donde subir el código de la aplicación.
 
 Generamos una aplicación Spring Boot en [spring initializr](https://start.spring.io/) con la siguiente [configuración](https://start.spring.io/#!type=gradle-project-kotlin&language=kotlin&platformVersion=3.1.3&packaging=jar&jvmVersion=17&groupId=dgraciac.guides&artifactId=guide-cd-render-docker-based-spring-boot&name=guide-cd-render-docker-based-spring-boot&description=guide-cd-render-docker-based-spring-boot&packageName=dgraciac.guides.guidecdrenderdockerbasedspringboot&dependencies=web,actuator). Lo descargamos y lo subimos al repositorio de GitHub.
 
-# _Containerización_
+## _Containerización_
 
 Tenemos que _containerizar_ nuestra aplicación para que Render pueda ejecutarla como un contenedor de Docker. Para conseguirlo, necesitamos añadir un fichero Dockerfile apropiado para nuestra aplicación Spring Boot en el directorio raíz del repositorio. El siguiente fichero Dockerfile servirá para alcanzar nuestro objetivo (si estás interesado/a en los detalles de este Dockerfile, puedes consultar la [guía oficial de Spring Boot Docker](https://spring.io/guides/topicals/spring-boot-docker/) que he seguido).
 
@@ -30,7 +32,7 @@ ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /spring-boot.jar ${0} ${@}"]
 EXPOSE 8080
 ```
 
-# Publicación de una nueva imagen de Docker cuando ocurra un _push_ a la rama principal
+## Publicación de una nueva imagen de Docker cuando ocurra un _push_ a la rama principal
 
 Ahora que ya tenemos nuestro Dockerfile listo, vamos a publicar una imagen de Docker cada vez que ocurra un _push_ a la rama principal de nuestro repositorio. De eso se va a encargar un _workflow_ de GitHub Actions que situaremos en la ruta «.github/workflows/on-push-to-main.yaml».
 
@@ -93,7 +95,7 @@ jobs:
 
 Subimos este cambio a la rama principal y esto iniciará un [_workflow run_](https://github.com/dgraciac/guide-cd-render-docker-based-spring-boot/actions) que publicará una nueva imágen de Docker de la aplicación Spring Boot en el [_container registry de nuestra cuenta de GitHub_](https://github.com/dgraciac?tab=packages) con dos etiquetas: «latest» y otra con el _commit_ SHA.
 
-# Conectar Render a nuestras imágenes de Docker
+## Conectar Render a nuestras imágenes de Docker
 
 Ahora que ya tenemos una URL para nuestras imágenes de Docker, vamos a configurar un servicio web en Render y vamos a conectarlo a «ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:latest».
 
@@ -138,7 +140,7 @@ Ahora ya podemos deplegar manualmente la versión «latest» de nuestra aplicaci
 
 Pero lo que realmente nos va a facilitar la vida es que nuestro servicio web se despliegue automáticamente cada vez que se publique una nueva imágen Docker de la aplicación. Es decir, despliegue continuo.
 
-# Despliegue continuo
+## Despliegue continuo
 
 Para configurar el despliegue continuo vamos a usar el [_webhook_](https://render.com/docs/deploy-an-image#deploy-via-webhook) que nos ofrece Render para iniciar un nuevo despliegue.
 
