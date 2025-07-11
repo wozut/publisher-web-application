@@ -4,9 +4,14 @@ import { safeReadFileAsString } from "@/libraries/file-system/safeReadFileAsStri
 import { articlesDirectory } from "@/src/article/articlesDirectory";
 import { AnyCustomError } from "@/src/CustomError";
 import { ResultAsync } from "neverthrow";
-import { RenderMarkdownText } from "./render-markdown-text/render-markdown-text";
+import { ArticleContentView } from "@/src/article/ArticleContentView";
+import { ReactElement } from "react";
 
-export default async function ArticleView({ article }: { article: Article }) {
+export default async function ArticleView({
+  article,
+}: {
+  article: Article;
+}): Promise<ReactElement> {
   const authorId = article.author;
   const author = authors.find((author) => author.id === authorId);
   if (author === undefined) {
@@ -21,11 +26,7 @@ export default async function ArticleView({ article }: { article: Article }) {
 
   return result.match(
     (content: string) => {
-      return (
-        <article className="w-full">
-          <RenderMarkdownText markdownText={content} />
-        </article>
-      );
+      return <ArticleContentView content={content} />;
     },
     () => {
       throw new Error("TODO");
