@@ -23,12 +23,12 @@ export default async function ArticleView({ article }: { article: Article }) {
     (content: string) => {
       return (
         <div className="w-full flex flex-col place-items-center items-center gap-5">
-          <h1 className="w-full lg:font-bold font-semibold lg:text-[64px] text-[30px] leading-tight text-charcoal-blue">
+          <h1 className="w-full lg:font-bold font-semibold lg:text-[64px] text-[30px] leading-tight">
             {article.title}
           </h1>
           <div className="w-full h-full flex gap-2 items-center">
             <div className="flex flex-col gap-1">
-              <p className="lg:font-semibold font-bold lg:text-xl text-sm text-charcoal-blue">
+              <p className="lg:font-semibold font-bold lg:text-xl text-sm">
                 {author.firstName} {author.lastName}
               </p>
             </div>
