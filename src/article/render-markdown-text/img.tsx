@@ -18,10 +18,10 @@ export async function IMG({
   const source: string = isNullish(src)
     ? imageNotFoundPath
     : isBlob(src)
-      ? await blobToString(src as Blob)
-      : (src as string);
+      ? await blobToString(src)
+      : src;
 
-  const alternate: string = isNullish(alt) ? "" : (alt as string);
+  const alternate: string = isNullish(alt) ? "" : alt;
 
   return (
     <div className="relative w-full h-[14rem] sm:h-[26rem] md:h-[32rem]">
