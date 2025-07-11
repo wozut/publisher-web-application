@@ -1,10 +1,10 @@
 import { ExtraProps } from "react-markdown";
 import { ClassAttributes, ImgHTMLAttributes, ReactElement } from "react";
 import Image from "next/image";
-import { isUndefined } from "@/libraries/value-definition/isUndefined";
 import { imageNotFoundPath } from "@/src/imageNotFoundPath";
 import { isBlob } from "@/libraries/value-definition/isBlob";
 import { blobToString } from "@/libraries/blob/blobToString";
+import { isNullish } from "@/libraries/value-definition/isNullish";
 
 export async function IMG({
   src,
@@ -15,13 +15,13 @@ export async function IMG({
 }: ClassAttributes<HTMLImageElement> &
   ImgHTMLAttributes<HTMLImageElement> &
   ExtraProps): Promise<ReactElement> {
-  const source: string = isUndefined(src)
+  const source: string = isNullish(src)
     ? imageNotFoundPath
     : isBlob(src)
       ? await blobToString(src as Blob)
       : (src as string);
 
-  const alternate: string = isUndefined(alt) ? "" : (alt as string);
+  const alternate: string = isNullish(alt) ? "" : (alt as string);
 
   return (
     <div className="relative w-full h-[14rem] sm:h-[26rem] md:h-[32rem]">
