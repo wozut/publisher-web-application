@@ -30,7 +30,7 @@ export async function IMG({
         alt={alternate}
         fill={true}
         quality={100}
-        className="mb-1"
+        className=""
         style={{ objectFit: "contain" }}
         {...rest}
       />

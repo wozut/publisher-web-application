@@ -8,7 +8,7 @@ export function FigCaption({
   HTMLAttributes<HTMLElement> &
   ExtraProps): ReactElement {
   return (
-    <figcaption className="font-light text-sm leading-normal" {...rest}>
+    <figcaption className="font-light text-sm leading-normal mt-1" {...rest}>
       {children}
     </figcaption>
   );
