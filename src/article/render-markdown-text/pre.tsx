@@ -25,9 +25,7 @@ export function Pre({
       (child.props as ComponentProps<typeof Code>).node?.tagName === "code"
     ) {
       const fontStyle = {
-        fontFamily: "'JetBrains Mono', monospace",
-        lineHeight: "1.5",
-        fontSize: "1rem",
+        ...jetBrainsMono.style,
       };
 
       const props = child.props as { className: string; children: string };
@@ -35,7 +33,7 @@ export function Pre({
 
       return (
         <div
-          className={`overflow-x-auto rounded-[0.75rem] w-full max-w-full block min-w-0 mb-4`}
+          className={`overflow-x-auto rounded-[1rem] w-full mb-4 normal-article-text`}
         >
           <SyntaxHighlighter
             showLineNumbers={true}
@@ -61,8 +59,6 @@ export function Pre({
 
     return child;
   });
-
-  console.log(mappedChildren?.length);
 
   return <pre>{mappedChildren}</pre>;
 }
