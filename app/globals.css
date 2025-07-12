@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@layer components {
+    .normal-article-text {
+        @apply font-normal;
+        @apply text-[1.15rem];
+        @apply leading-[1.8rem];
+    }
+}
+
 /*:root {*/
 /*  --background: #ffffff;*/
 /*  --foreground: #171717;*/

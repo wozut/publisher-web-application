@@ -10,6 +10,9 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { ExtraProps } from "react-markdown";
 import { codeBlockStyle } from "./code-block/code-block-style";
 import { Code } from "./code";
+import { JetBrains_Mono } from "next/font/google";
+
+const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"] });
 
 export function Pre({
   children,
@@ -58,6 +61,8 @@ export function Pre({
 
     return child;
   });
+
+  console.log(mappedChildren?.length);
 
   return <pre>{mappedChildren}</pre>;
 }
