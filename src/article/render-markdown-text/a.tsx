@@ -23,7 +23,7 @@ export function A({
   return (
     <a
       className={
-        "font-medium hover:drop-shadow-[0_0_0.025rem_rgba(0,0,0,1)]/100"
+        "font-medium hover:drop-shadow-[0_0_0.075rem_rgba(0,0,0,1)]/100 active:drop-shadow-[0_0_0.025rem_rgba(0,0,0,1)]/100"
       }
       href={href}
       target={target}
