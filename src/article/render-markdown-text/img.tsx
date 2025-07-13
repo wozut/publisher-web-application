@@ -24,22 +24,16 @@ export async function IMG({
   const alternate: string = isNullish(alt) ? "" : alt;
 
   return (
-    <div
-      className={
-        "bg-radial-[at_25%_25%] from-white to-zinc-900 to-75% w-full p-2 rounded-2xl"
-      }
-    >
-      <div className="relative w-full aspect-video">
-        <Image
-          src={source}
-          alt={alternate}
-          fill={true}
-          quality={100}
-          className=""
-          style={{ objectFit: "contain" }}
-          {...rest}
-        />
-      </div>
+    <div className="relative w-full aspect-video">
+      <Image
+        src={source}
+        alt={alternate}
+        fill={true}
+        quality={100}
+        className=""
+        style={{ objectFit: "contain" }}
+        {...rest}
+      />
     </div>
   );
 }
