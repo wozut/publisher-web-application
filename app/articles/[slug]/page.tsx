@@ -14,5 +14,15 @@ export default async function ArticlePage({
   );
   if (isNullish(foundArticle)) throw new Error("TODO");
 
-  return <ArticleView article={foundArticle} />;
+  return (
+    <div className={"w-full @container"}>
+      <div
+        className={
+          "mx-auto max-w-[100cqw] @min-2xs:max-w-[98cqw] @min-xs:max-w-[94cqw] @min-2xl:max-w-[90cqw] @min-6xl:max-w-5xl"
+        }
+      >
+        <ArticleView article={foundArticle} />
+      </div>
+    </div>
+  );
 }
