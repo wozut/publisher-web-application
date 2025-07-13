@@ -24,18 +24,16 @@ export async function IMG({
   const alternate: string = isNullish(alt) ? "" : alt;
 
   return (
-    <div className={"@container w-full"}>
-      <div className="relative mx-auto max-w-[100cqw] aspect-[2.5] w-full ">
-        <Image
-          src={source}
-          alt={alternate}
-          fill={true}
-          quality={100}
-          className="border border-amber-700"
-          style={{ objectFit: "contain" }}
-          {...rest}
-        />
-      </div>
+    <div className="relative w-full aspect-[2.5]">
+      <Image
+        src={source}
+        alt={alternate}
+        fill={true}
+        quality={100}
+        className=""
+        style={{ objectFit: "contain" }}
+        {...rest}
+      />
     </div>
   );
 }
