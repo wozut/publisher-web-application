@@ -1,16 +1,26 @@
-import { Geist, Geist_Mono, JetBrains_Mono } from "next/font/google";
+import {
+  JetBrains_Mono,
+  Noto_Sans,
+  Noto_Sans_Display,
+  Noto_Sans_Mono,
+} from "next/font/google";
 
-export const geist = Geist({
-  variable: "--font-geist",
-  subsets: ["latin"],
+export const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
+  subsets: ["latin", "latin-ext"],
 });
 
-export const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+export const notoSansDisplay = Noto_Sans_Display({
+  variable: "--font-noto-sans-display",
+  subsets: ["latin", "latin-ext"],
+});
+
+export const notoSansMono = Noto_Sans_Mono({
+  variable: "--font-noto-sans-mono",
+  subsets: ["latin", "latin-ext"],
 });
 
 export const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });

@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { geistMono, geist, jetBrainsMono } from "@/app/fonts";
+import {
+  jetBrainsMono,
+  notoSans,
+  notoSansDisplay,
+  notoSansMono,
+} from "@/app/fonts";
 
 export const metadata: Metadata = {
   title: "David Gracia's Website",
@@ -15,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geist.variable} ${geistMono.variable} ${jetBrainsMono.variable} antialiased`}
+        className={`${notoSans.variable} ${notoSansDisplay.variable} ${notoSansMono.variable} ${jetBrainsMono.variable} antialiased`}
       >
         {children}
       </body>

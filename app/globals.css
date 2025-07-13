@@ -10,11 +10,12 @@
 }
 
 @theme inline {
-  --font-geist: var(--font-geist);
-  --font-geist-mono: var(--font-geist-mono);
+  --font-noto-sans: var(--font-noto-sans);
+  --font-noto-sans-display: var(--font-noto-sans-display);
+  --font-noto-sans-mono: var(--font-noto-sans-mono);
   --font-jetbrains-mono: var(--font-jetbrains-mono);
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-sans: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-noto-sans-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 /*:root {*/
