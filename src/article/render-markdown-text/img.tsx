@@ -24,7 +24,11 @@ export async function IMG({
   const alternate: string = isNullish(alt) ? "" : alt;
 
   return (
-    <div className={"bg-gray-300 w-full p-2"}>
+    <div
+      className={
+        "bg-radial-[at_25%_25%] from-white to-zinc-900 to-75% w-full p-2"
+      }
+    >
       <div className="relative w-full aspect-video">
         <Image
           src={source}
