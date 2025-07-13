@@ -26,7 +26,7 @@ export async function IMG({
   return (
     <div
       className={
-        "bg-radial-[at_25%_25%] from-white to-zinc-900 to-75% w-full p-2"
+        "bg-radial-[at_25%_25%] from-white to-zinc-900 to-75% w-full p-2 rounded-2xl"
       }
     >
       <div className="relative w-full aspect-video">

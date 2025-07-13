@@ -6,7 +6,5 @@ export function Video({
 }: ClassAttributes<HTMLVideoElement> &
   VideoHTMLAttributes<HTMLVideoElement> &
   ExtraProps): ReactElement {
-  return (
-    <video src={src} autoPlay controls className="rounded-lg object-fit" />
-  );
+  return <video src={src} autoPlay controls className="object-fit" />;
 }
