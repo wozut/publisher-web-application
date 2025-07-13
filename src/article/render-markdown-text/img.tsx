@@ -24,16 +24,18 @@ export async function IMG({
   const alternate: string = isNullish(alt) ? "" : alt;
 
   return (
-    <div className="relative w-full aspect-[2.5]">
-      <Image
-        src={source}
-        alt={alternate}
-        fill={true}
-        quality={100}
-        className=""
-        style={{ objectFit: "contain" }}
-        {...rest}
-      />
+    <div className={"bg-gray-300 w-full p-2"}>
+      <div className="relative w-full aspect-video">
+        <Image
+          src={source}
+          alt={alternate}
+          fill={true}
+          quality={100}
+          className=""
+          style={{ objectFit: "contain" }}
+          {...rest}
+        />
+      </div>
     </div>
   );
 }
