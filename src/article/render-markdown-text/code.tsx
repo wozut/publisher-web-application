@@ -12,7 +12,7 @@ export function Code({
   ExtraProps): ReactElement {
   return (
     <code
-      className={`${jetBrainsMono.className} normal-article-text px-[0.25rem] py-[0.125rem] bg-gray-300 rounded-[0.25rem]`}
+      className={`${jetBrainsMono.className} normal-article-text px-1 py-0.5 bg-gray-300 rounded-[0.25rem]`}
       {...rest}
     >
       {children}

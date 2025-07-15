@@ -8,7 +8,7 @@ export function UL({
   HTMLAttributes<HTMLUListElement> &
   ExtraProps): ReactElement {
   return (
-    <ul className="list-disc list-outside ml-10 mb-4" {...rest}>
+    <ul className="list-disc list-outside ml-5 mb-2" {...rest}>
       {children}
     </ul>
   );

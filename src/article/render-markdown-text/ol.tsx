@@ -8,7 +8,7 @@ export function OL({
   OlHTMLAttributes<HTMLOListElement> &
   ExtraProps): ReactElement {
   return (
-    <ol className="list-decimal list-outside ml-10 mb-4" {...rest}>
+    <ol className="list-decimal list-outside ml-5 mb-2" {...rest}>
       {children}
     </ol>
   );

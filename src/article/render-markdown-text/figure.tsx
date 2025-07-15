@@ -9,7 +9,7 @@ export function Figure({
   ExtraProps): ReactElement {
   return (
     <figure
-      className="flex flex-col place-items-center items-center mb-4 bg-[#222222] w-full p-2 rounded-2xl"
+      className="flex flex-col place-items-center items-center mb-2 bg-[#222222] w-full p-1 rounded-2xl"
       {...rest}
     >
       {children}

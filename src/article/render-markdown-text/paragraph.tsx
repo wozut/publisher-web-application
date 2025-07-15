@@ -8,7 +8,7 @@ export function Paragraph({
   HTMLAttributes<HTMLParagraphElement> &
   ExtraProps): ReactElement {
   return (
-    <p className="normal-article-text mb-4" {...rest}>
+    <p className="normal-article-text mb-2" {...rest}>
       {children}
     </p>
   );

@@ -8,7 +8,7 @@ export function H1({
   HTMLAttributes<HTMLHeadingElement> &
   ExtraProps): ReactElement {
   return (
-    <h1 className="font-semibold text-4xl mb-4" {...rest}>
+    <h1 className="font-semibold text-4xl mb-1" {...rest}>
       {children}
     </h1>
   );

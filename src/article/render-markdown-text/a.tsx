@@ -6,7 +6,7 @@ import { MdLink } from "react-icons/md";
 function getLinkIcon(
   target: "_self" | "_blank" | "_parent" | "_top" | (string & {}) | undefined,
 ) {
-  const className = "self-start w-4";
+  const className = "self-start w-2";
   if (target === "_blank") return <MdOpenInNew className={className} />;
   if (target === "_self") return <MdLink className={className} />;
   return <span className={"hidden"}></span>;

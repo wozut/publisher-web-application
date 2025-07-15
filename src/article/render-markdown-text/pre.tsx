@@ -31,7 +31,7 @@ export function Pre({
 
       return (
         <div
-          className={`overflow-x-auto rounded-2xl w-full mb-4 normal-article-text`}
+          className={`overflow-x-auto rounded-2xl w-full mb-2 normal-article-text`}
         >
           <SyntaxHighlighter
             showLineNumbers={true}

@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --space-1: 0.5rem;
+/*  --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
   --space-4: 2rem;
@@ -10,10 +10,10 @@
   --space-6: 3rem;
   --space-7: 3.5rem;
   --space-8: 4rem;
-  --space-9: 4.5rem;
+  --space-9: 4.5rem;*/
 
   /*--color-*: initial;*/
-  /*--spacing-*: initial;*/
+  --spacing: 0.5rem;
 
   --font-noto-sans: var(--font-noto-sans);
   --font-noto-sans-display: var(--font-noto-sans-display);
@@ -23,7 +23,6 @@
   --font-mono: var(--font-noto-sans-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --text-*:initial;
-
   --text-xs: 0.75rem;
   --text-xs--line-height: calc(1 / 0.75);
   --text-sm: 0.875rem;
@@ -59,8 +58,7 @@
 @layer components {
   .normal-article-text {
     @apply font-normal;
-    @apply text-[1.15rem];
-    @apply leading-[1.8rem];
+    @apply text-base;
   }
 }
 
