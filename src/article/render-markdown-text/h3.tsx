@@ -8,10 +8,7 @@ export function H3({
   HTMLAttributes<HTMLHeadingElement> &
   ExtraProps): ReactElement {
   return (
-    <h3
-      className="font-semibold text-[1.8rem] leading-[2.5rem] mb-4 mt-9"
-      {...rest}
-    >
+    <h3 className="font-semibold text-2xl mb-4 mt-9" {...rest}>
       {children}
     </h3>
   );
