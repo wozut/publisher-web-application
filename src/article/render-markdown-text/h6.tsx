@@ -8,7 +8,10 @@ export function H6({
   HTMLAttributes<HTMLHeadingElement> &
   ExtraProps): ReactElement {
   return (
-    <h6 className="font-semibold text-base mb-2 mt-5" {...rest}>
+    <h6
+      className="font-semibold text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-2 mt-5"
+      {...rest}
+    >
       {children}
     </h6>
   );
