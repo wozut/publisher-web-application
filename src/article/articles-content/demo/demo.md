@@ -53,6 +53,8 @@ innovation, and continuous learning.
 
 ###### 1.1.1.1.1 Heading 6. Video figures
 
+By default, Tailwind removes all of the default browser styling from paragraphs, headings, lists and more. This ends up being really useful for building application UIs because you spend less time undoing user-agent styles, but when you really are just trying to style some content that came from a rich-text editor in a CMS or a markdown file, it can be surprising and unintuitive.
+
 <figure>
     <video src="https://convertiaback.com/wp-content/uploads/2024/10/home-casos-exito.mp4"></video>
     <figcaption>Video.1 - Value of the Cybersecurity in the Growth & Safety of IT Exports sad sad df dsaf dafas df saf saf adsf adsdsa fdsaf daf dff adsfsasa fasf asf</figcaption>
