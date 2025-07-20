@@ -69,6 +69,10 @@
     @apply text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-3xl;
   }
 
+  .code-text {
+    @apply text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-2xl;
+  }
+
   .h1 {
     @apply font-semibold;
     @apply text-h1;
