@@ -84,6 +84,14 @@ embrace change as an opportunity for growth rather than a setback. Instead of be
 challenges, those with a growth mindset approach them with curiosity and a willingness to learn. This adaptability is
 crucial in an industry where the only certainty is uncertainty.
 
+## Quotation
+
+In cybersecurity, <q>change</q> is the only constant. New technologies, evolving attack vectors, and shifting regulatory
+landscapes demand that professionals remain adaptable and open to learning. A growth mindset enables individuals to
+embrace change as an opportunity for growth rather than a setback. Instead of becoming discouraged by unfamiliar
+challenges, those with a growth mindset approach them with curiosity and a willingness to learn. This adaptability is
+crucial in an industry where the only certainty is uncertainty.
+
 ## Quotation blocks
 
 This is a quotation block:

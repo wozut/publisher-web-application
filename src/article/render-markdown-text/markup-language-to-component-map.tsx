@@ -20,6 +20,7 @@ import { Video } from "./video";
 import { Emphasis } from "@/src/article/render-markdown-text/Emphasis";
 import { Figure } from "./figure";
 import { FigCaption } from "@/src/article/render-markdown-text/FigCaption";
+import { Q } from "@/src/article/render-markdown-text/quote";
 
 type Props = ClassAttributes<HTMLElement> &
   HTMLAttributes<HTMLElement> &
@@ -40,6 +41,7 @@ export const markUpLanguageToComponentMap: Components & ComponentsExtended = {
   ul: (props) => <UL {...props} />,
   ol: (props) => <OL {...props} />,
   li: (props) => <LI {...props} />,
+  q: (props) => <Q {...props} />,
   blockquote: (props) => <Blockquote {...props} />,
   a: (props) => <A {...props} />,
   pre: (props) => <Pre {...props} />,
