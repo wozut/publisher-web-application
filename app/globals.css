@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@layer base {
+  q, blockquote {
+    quotes: none;
+  }
+  q:before, q:after,
+  blockquote:before, blockquote:after {
+    content: none;
+  }
+}
+
 @theme inline {
   --font-noto-sans: var(--font-noto-sans);
   --font-noto-sans-display: var(--font-noto-sans-display);
