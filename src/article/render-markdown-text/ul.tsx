@@ -8,10 +8,7 @@ export function UL({
   HTMLAttributes<HTMLUListElement> &
   ExtraProps): ReactElement {
   return (
-    <ul
-      className="list-disc list-outside ml-5 article-block-margin-y"
-      {...rest}
-    >
+    <ul className="list-disc list-outside ml-5 list-margin-y" {...rest}>
       {children}
     </ul>
   );
