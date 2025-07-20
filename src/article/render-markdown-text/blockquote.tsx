@@ -8,13 +8,15 @@ export function Blockquote({
   ExtraProps): ReactElement {
   return (
     <blockquote className="flex flex-row w-full gap-1 article-block-margin-y">
-      <span className={"self-start font-semibold text-double-quote"}>“</span>
+      <span className={"self-start font-semibold text-blockquote-symbols"}>
+        “
+      </span>
       <span className="overflow-x-auto regular-article-text text-start w-full">
         {children}
       </span>
       <span
         className={
-          "h-[2.3rem] sm:h-[2.5rem] self-end font-semibold text-double-quote"
+          "h-[2.3rem] sm:h-[2.5rem] self-end font-semibold text-blockquote-symbols"
         }
       >
         ”

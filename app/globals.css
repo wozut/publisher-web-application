@@ -82,7 +82,7 @@
   @apply text-4xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl;
 }
 
-@utility text-double-quote {
+@utility text-blockquote-symbols {
   @apply text-h1;
 }
 
