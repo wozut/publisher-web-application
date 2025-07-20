@@ -9,7 +9,7 @@ export function LI({
   LiHTMLAttributes<HTMLLIElement> &
   ExtraProps): ReactElement {
   return (
-    <li className="normal-article-text list-item-margin-y" {...rest}>
+    <li className="regular-article-text list-item-margin-y" {...rest}>
       {React.Children.toArray(children).map((child, index) =>
         isString(child) ? <span key={index}>{child}</span> : child,
       )}

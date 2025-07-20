@@ -15,7 +15,7 @@ export function Blockquote({
       >
         “
       </span>
-      <span className="overflow-x-auto normal-article-text pt-1 sm:pt-2 text-start w-full">
+      <span className="overflow-x-auto regular-article-text pt-1 sm:pt-2 text-start w-full">
         {children}
       </span>
 

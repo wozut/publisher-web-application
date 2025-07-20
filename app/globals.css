@@ -72,7 +72,7 @@
 }
 
 @layer components {
-  .normal-article-text {
+  .regular-article-text {
     @apply font-normal;
     @apply text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-3xl;
   }
