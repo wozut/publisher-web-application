@@ -12,7 +12,6 @@ export function Blockquote({
       <span className="overflow-x-auto regular-article-text text-start w-full">
         {children}
       </span>
-
       <span
         className={
           "h-[2.3rem] sm:h-[2.5rem] self-end font-semibold text-double-quote"
