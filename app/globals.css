@@ -55,10 +55,24 @@
   --text-11xl--line-height: 1;
 }
 
+@utility text-h1 {
+  @apply text-4xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl;
+}
+
+@utility text-double-quote {
+  @apply text-h1;
+}
+
 @layer components {
   .normal-article-text {
     @apply font-normal;
     @apply text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-3xl;
+  }
+
+  .h1 {
+    @apply font-semibold;
+    @apply text-h1;
+    @apply mb-1;
   }
 }
 
