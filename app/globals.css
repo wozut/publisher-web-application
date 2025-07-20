@@ -18,10 +18,21 @@
   --color-*: initial;
   --color-code-background: oklch(92.8% .006 264.531);
 
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+
   --font-noto-sans: var(--font-noto-sans);
   --font-noto-sans-display: var(--font-noto-sans-display);
   --font-noto-sans-mono: var(--font-noto-sans-mono);
   --font-jetbrains-mono: var(--font-jetbrains-mono);
+
+  --font-code: var(--font-jetbrains-mono);
   --font-sans: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-mono: var(--font-noto-sans-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
@@ -78,14 +89,18 @@
   @apply my-0.5 sm:my-1 lg:my-1.5 xl:my-2 2xl:my-2.5;
 }
 
+@utility code-text {
+  @apply text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-2xl;
+}
+
 @layer components {
   .regular-article-text {
     @apply font-normal;
     @apply text-sm sm:text-base lg:text-lg xl:text-xl 2xl:text-3xl;
   }
 
-  .code-text {
-    @apply text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-2xl;
+  .code {
+    @apply font-code code-text px-0.5 bg-code-background rounded-sm text-nowrap;
   }
 }
 
