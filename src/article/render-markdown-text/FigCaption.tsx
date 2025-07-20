@@ -9,7 +9,7 @@ export function FigCaption({
   ExtraProps): ReactElement {
   return (
     <figcaption
-      className="font-light text-sm sm:text-base md:text-lg xl:text-xl mt-1 text-white"
+      className="font-light text-xs sm:text-sm lg:text-base xl:text-lg 2xl:text-xl mt-1 text-white"
       {...rest}
     >
       {children}
