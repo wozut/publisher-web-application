@@ -7,7 +7,7 @@ export function Blockquote({
   BlockquoteHTMLAttributes<HTMLQuoteElement> &
   ExtraProps): ReactElement {
   return (
-    <blockquote className="flex flex-row w-full gap-1 mb-2">
+    <blockquote className="flex flex-row w-full gap-1 my-2">
       <span
         className={
           "w-fit h-[1.4rem] sm:h-[2.5rem] self-start font-semibold text-double-quote"

@@ -76,7 +76,7 @@
   .h1 {
     @apply font-semibold;
     @apply text-h1;
-    @apply mb-1;
+    @apply mb-2;
   }
 }
 
