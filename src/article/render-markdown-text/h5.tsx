@@ -9,7 +9,7 @@ export function H5({
   ExtraProps): ReactElement {
   return (
     <h5
-      className="font-semibold text-lg sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl my-2"
+      className="font-semibold text-lg sm:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl article-block-margin-y"
       {...rest}
     >
       {children}

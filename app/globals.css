@@ -63,6 +63,14 @@
   @apply text-h1;
 }
 
+@utility article-block-margin-y {
+  @apply my-2 sm:my-2.5 lg:my-3 xl:my-3.5 2xl:my-4;
+}
+
+@utility list-item-margin-y {
+  @apply my-0.5 sm:my-1 lg:my-1.5 xl:my-2 2xl:my-2.5;
+}
+
 @layer components {
   .normal-article-text {
     @apply font-normal;

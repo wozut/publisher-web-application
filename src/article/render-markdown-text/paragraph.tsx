@@ -8,7 +8,7 @@ export function Paragraph({
   HTMLAttributes<HTMLParagraphElement> &
   ExtraProps): ReactElement {
   return (
-    <p className="normal-article-text my-2" {...rest}>
+    <p className="normal-article-text article-block-margin-y" {...rest}>
       {children}
     </p>
   );
