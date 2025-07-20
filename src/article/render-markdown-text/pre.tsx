@@ -30,9 +30,7 @@ export function Pre({
       const language = props.className?.split("language-")[1];
 
       return (
-        <div
-          className={`overflow-x-auto rounded-2xl w-full mb-2 normal-article-text`}
-        >
+        <div className={`overflow-x-auto rounded-2xl w-full mb-2 code-text`}>
           <SyntaxHighlighter
             showLineNumbers={true}
             PreTag="pre"
