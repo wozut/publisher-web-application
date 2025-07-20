@@ -12,8 +12,11 @@
   --space-8: 4rem;
   --space-9: 4.5rem;*/
 
-  /*--color-*: initial;*/
+
   --spacing: 0.5rem;
+
+  --color-*: initial;
+  --color-code-background: oklch(92.8% .006 264.531);
 
   --font-noto-sans: var(--font-noto-sans);
   --font-noto-sans-display: var(--font-noto-sans-display);
