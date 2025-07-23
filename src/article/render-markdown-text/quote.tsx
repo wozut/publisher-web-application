@@ -3,17 +3,17 @@ import { ExtraProps } from "react-markdown";
 
 export function Q({
   children,
-  openingsymbol,
-  closingsymbol,
+  opening,
+  closing,
   ...rest
 }: ClassAttributes<HTMLQuoteElement> &
   QuoteHTMLAttributes<HTMLQuoteElement> &
-  ExtraProps): ReactElement {
+  ExtraProps & { opening?: string; closing?: string }): ReactElement {
   return (
     <q {...rest}>
-      {openingsymbol}
+      {opening}
       {children}
-      {closingsymbol}
+      {closing}
     </q>
   );
 }
