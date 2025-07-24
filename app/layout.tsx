@@ -6,6 +6,7 @@ import {
   notoSansDisplay,
   notoSansMono,
 } from "@/app/fonts";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "David Gracia's Website",

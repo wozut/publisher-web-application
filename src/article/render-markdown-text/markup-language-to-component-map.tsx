@@ -12,7 +12,7 @@ import { Blockquote } from "./blockquote";
 import { LI } from "./li";
 import { Code } from "./code";
 import { Strong } from "./strong";
-import { ClassAttributes, HTMLAttributes, ReactElement } from "react";
+import React, { ClassAttributes, HTMLAttributes, ReactElement } from "react";
 import { H5 } from "./h5";
 import { H6 } from "./h6";
 import { IMG } from "./img";
@@ -28,7 +28,10 @@ type Props = ClassAttributes<HTMLElement> &
 const strong = (props: Props): ReactElement => <Strong {...props} />;
 const emphasis = (props: Props): ReactElement => <Emphasis {...props} />;
 
-type ComponentsExtended = Record<string, (props: never) => ReactElement>;
+type ComponentsExtended = Record<
+  string,
+  React.ComponentType<{ children: React.ReactNode }>
+>;
 
 export const markUpLanguageToComponentMap: Components & ComponentsExtended = {
   p: (props) => <Paragraph {...props} />,
