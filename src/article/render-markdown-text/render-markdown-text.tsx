@@ -11,6 +11,7 @@ export function RenderMarkdownText({
 }): ReactElement {
   return (
     <Markdown
+      //TODO remarkGfm
       remarkPlugins={[remarkUnwrapImages]}
       rehypePlugins={[rehypeRaw]}
       components={markUpLanguageToComponentMap}
