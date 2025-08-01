@@ -38,6 +38,8 @@ export function Pre({
     if (!finalClassName.startsWith(languagePrefix)) return child;
 
     const language: string = finalClassName.replace(languagePrefix, "");
+    const finalLanguage: string | undefined =
+      language === "" ? undefined : language;
 
     const fontStyle = {
       ...jetBrainsMono.style,
@@ -51,7 +53,7 @@ export function Pre({
           showLineNumbers={true}
           PreTag="pre"
           CodeTag={"code"}
-          language={language}
+          language={finalLanguage}
           style={codeBlockStyle}
           customStyle={{
             margin: "unset",
