@@ -6,7 +6,8 @@ export type Article = {
   // date: string;
   slug: string;
   // isFeatured: boolean;
-  pathToContent: string;
+  pathToMarkdownContent: string;
+  pathToHtmlContent: string;
   author: string;
   // readTime: number;
   // description: string;

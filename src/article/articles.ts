@@ -14,8 +14,10 @@ export const articles: Article[] = [
       "d3d69358-f54d-4560-8104-c65bd3fc2fc4",
     ],
     slug: "despliegue-continuo-en-render-de-una-aplicacion-spring-boot",
-    pathToContent:
+    pathToMarkdownContent:
       "/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/despliegue-continuo-en-render-de-una-aplicacion-spring-boot.md",
+    pathToHtmlContent:
+      "/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/despliegue-continuo-en-render-de-una-aplicacion-spring-boot.html",
   },
   {
     id: "e4699f3c-10d9-4415-9227-a46e68073359",
@@ -30,6 +32,7 @@ export const articles: Article[] = [
       "d3d69358-f54d-4560-8104-c65bd3fc2fc4",
     ],
     slug: "demo",
-    pathToContent: "/demo/demo.md",
+    pathToMarkdownContent: "/demo/demo.md",
+    pathToHtmlContent: "/demo/demo.html",
   },
 ] as const;

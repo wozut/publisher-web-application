@@ -18,7 +18,7 @@ export function RenderHtmlText({
       if (!(domNode instanceof Element) || domNode.type !== "tag")
         return undefined;
 
-      const tagName = domNode.name;
+      const tagName: string = domNode.name;
       const CustomComponent = markUpLanguageToComponentMap[tagName];
 
       if (isUndefined(CustomComponent)) return undefined;

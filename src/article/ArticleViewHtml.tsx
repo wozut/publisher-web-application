@@ -4,10 +4,10 @@ import { safeReadFileAsString } from "@/libraries/file-system/safeReadFileAsStri
 import { articlesDirectory } from "@/src/article/articlesDirectory";
 import { AnyCustomError } from "@/src/CustomError";
 import { ResultAsync } from "neverthrow";
-import { ArticleContentView } from "@/src/article/ArticleContentView";
 import { ReactElement } from "react";
+import { ArticleContentViewHtml } from "@/src/article/ArticleContentViewHtml";
 
-export default async function ArticleView({
+export default async function ArticleViewHtml({
   article,
 }: {
   article: Article;
@@ -17,7 +17,7 @@ export default async function ArticleView({
   if (author === undefined) {
     throw new Error("TODO");
   }
-  const fullArticlePath = `${articlesDirectory}${article.pathToMarkdownContent}`;
+  const fullArticlePath = `${articlesDirectory}${article.pathToHtmlContent}`;
   const encoding = "utf-8";
   const result: ResultAsync<string, AnyCustomError> = safeReadFileAsString(
     fullArticlePath,
@@ -26,7 +26,7 @@ export default async function ArticleView({
 
   return result.match(
     (content: string) => {
-      return <ArticleContentView content={content} />;
+      return <ArticleContentViewHtml content={content} />;
     },
     () => {
       throw new Error("TODO");
