@@ -2,7 +2,7 @@
   "name": "david-gracia-website",
   "version": "0.1.0",
   "engines": {
-    "node": "22.16.0"
+    "node": "22.18.0"
   },
   "private": true,
   "scripts": {
