@@ -2,16 +2,16 @@
 @plugin "@tailwindcss/typography";
 
 @layer base {
-  q,
-  blockquote {
-    quotes: none;
-  }
-  q:before,
-  q:after,
-  blockquote:before,
-  blockquote:after {
-    content: none;
-  }
+  /*q,*/
+  /*blockquote {*/
+  /*  quotes: none;*/
+  /*}*/
+  /*q:before,*/
+  /*q:after,*/
+  /*blockquote:before,*/
+  /*blockquote:after {*/
+  /*  content: none;*/
+  /*}*/
 }
 
 @theme inline {

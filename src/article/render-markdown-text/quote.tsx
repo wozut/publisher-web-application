@@ -3,17 +3,9 @@ import { ExtraProps } from "react-markdown";
 
 export function Q({
   children,
-  opening,
-  closing,
   ...rest
 }: ClassAttributes<HTMLQuoteElement> &
   QuoteHTMLAttributes<HTMLQuoteElement> &
-  ExtraProps & { opening?: string; closing?: string }): ReactElement {
-  return (
-    <q {...rest}>
-      {opening}
-      {children}
-      {closing}
-    </q>
-  );
+  ExtraProps): ReactElement {
+  return <q {...rest}>{children}</q>;
 }
