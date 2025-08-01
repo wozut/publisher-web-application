@@ -1,7 +1,6 @@
 import Markdown from "react-markdown";
 import { ReactElement } from "react";
 import rehypeRaw from "rehype-raw";
-import remarkUnwrapImages from "remark-unwrap-images";
 import { markUpLanguageToComponentMap } from "./markup-language-to-component-map";
 
 export function RenderMarkdownText({
@@ -12,7 +11,7 @@ export function RenderMarkdownText({
   return (
     <Markdown
       //TODO remarkGfm
-      remarkPlugins={[remarkUnwrapImages]}
+      remarkPlugins={[]}
       rehypePlugins={[rehypeRaw]}
       components={markUpLanguageToComponentMap}
     >
