@@ -118,7 +118,7 @@
 }
 
 @utility list-item-margin-y {
-  @apply my-0.5 sm:my-1 lg:my-1.5 xl:my-2 2xl:my-2.5;
+  @apply my-0.5 sm:my-1 lg:my-1.5 xl:my-1.5 2xl:my-1.5;
 }
 
 @utility list-margin-y {
