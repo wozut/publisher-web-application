@@ -30,7 +30,7 @@ const emphasis = (props: Props): ReactElement => <Emphasis {...props} />;
 
 type ComponentsExtended = Record<
   string,
-  React.ComponentType<{ children: React.ReactNode }>
+  React.ComponentType<{ children?: React.ReactNode } & HTMLAttributes<HTMLElement>>
 >;
 
 export const markUpLanguageToComponentMap: Components & ComponentsExtended = {

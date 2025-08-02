@@ -8,6 +8,8 @@ import parse, {
 import { markUpLanguageToComponentMap } from "./markup-language-to-component-map";
 import { isUndefined } from "@/libraries/value-definition/isUndefined";
 
+const SELF_CLOSING_TAGS = ["img"];
+
 export function RenderHtmlText({
   htmlText,
 }: {
@@ -25,7 +27,9 @@ export function RenderHtmlText({
 
       const props = {
         ...domNode.attribs,
-        children: domToReact(domNode.children as DOMNode[], options),
+        ...(SELF_CLOSING_TAGS.includes(tagName)
+          ? {}
+          : { children: domToReact(domNode.children as DOMNode[], options) }),
       };
       return <CustomComponent {...props} />;
     },
