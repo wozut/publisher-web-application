@@ -47,7 +47,7 @@ innovation, and continuous learning.
 ##### 1.1.1.1 Heading 5. Image figures
 
 <figure>
-    <img src="/article/demo/images/featured-post.png" alt="San Juan Mountains">
+    <img src="/article/demo/images/featured-post.png" alt="San Juan Mountains" />
     <figcaption>Fig.1 - Value of the Cybersecurity in the Growth & Safety of IT Exports</figcaption>
 </figure>
 
@@ -131,7 +131,7 @@ Quotation blocks can include any other element and style as shown below:
 >     2.  Nested _ordered_ item 2
 >
 > <figure>
->    <img src="/article/demo/images/featured-post.png" alt="San Juan Mountains">
+>    <img src="/article/demo/images/featured-post.png" alt="San Juan Mountains" />
 >    <figcaption>Fig.1 - Value of the Cybersecurity in the Growth & Safety of IT Exports</figcaption>
 > </figure>
 > <figure>
