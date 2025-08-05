@@ -1,28 +1,88 @@
 <h1>Despliegue continuo en Render de una aplicación Spring Boot</h1>
 
-<p>En este artículo voy a explicar cómo configurar el despliegue continuo en Render basado en imágenes <a href="https://www.docker.com/" title="Docker">Docker</a> de una aplicación <a href="https://spring.io/projects/spring-boot">Spring Boot</a>.</p>
+<p>
+  En este artículo voy a explicar cómo configurar el despliegue continuo en
+  Render basado en imágenes
+  <a href="https://www.docker.com/" title="Docker">Docker</a> de una aplicación
+  <a href="https://spring.io/projects/spring-boot">Spring Boot</a>.
+</p>
 
 <p>Herramientas y tecnologías usadas en este ejemplo:</p>
 
 <ul>
-  <li><a href="https://github.com/">GitHub</a> para el <a href="https://en.wikipedia.org/wiki/Version_control">control de versiones</a>.</li>
-  <li><a href="https://docs.github.com/en/actions">GitHub Actions</a> para gestionar el <a href="https://en.wikipedia.org/wiki/Continuous_deployment">despliegue continuo</a>.</li>
-  <li><a href="https://github.com/features/packages">GitHub Packages</a> para la publicación y descarga de imágenes <a href="https://www.docker.com/">Docker</a>.</li>
-  <li><a href="https://gradle.org/">Gradle</a>, <a href="https://kotlinlang.org/docs/jvm-get-started.html">Kotlin/JVM</a> y <a href="https://spring.io/projects/spring-boot">Spring Boot</a> como tecnologías principales de la aplicación. Pero <strong>lo que se explica en esta guía se puede aplicar a cualquier aplicación que se pueda <em>containerizar</em></strong>.</li>
-  <li><a href="https://render.com/">Render</a> como <a href="https://en.wikipedia.org/wiki/Platform_as_a_service">PaaS</a> donde desplegar y ejecutar nuestro <a href="https://en.wikipedia.org/wiki/Web_service">servicio web</a>.</li>
+  <li>
+    <a href="https://github.com/">GitHub</a> para el
+    <a href="https://en.wikipedia.org/wiki/Version_control"
+      >control de versiones</a
+    >.
+  </li>
+  <li>
+    <a href="https://docs.github.com/en/actions">GitHub Actions</a> para
+    gestionar el
+    <a href="https://en.wikipedia.org/wiki/Continuous_deployment"
+      >despliegue continuo</a
+    >.
+  </li>
+  <li>
+    <a href="https://github.com/features/packages">GitHub Packages</a> para la
+    publicación y descarga de imágenes
+    <a href="https://www.docker.com/">Docker</a>.
+  </li>
+  <li>
+    <a href="https://gradle.org/">Gradle</a>,
+    <a href="https://kotlinlang.org/docs/jvm-get-started.html">Kotlin/JVM</a> y
+    <a href="https://spring.io/projects/spring-boot">Spring Boot</a> como
+    tecnologías principales de la aplicación. Pero
+    <strong
+      >lo que se explica en esta guía se puede aplicar a cualquier aplicación
+      que se pueda <em>containerizar</em></strong
+    >.
+  </li>
+  <li>
+    <a href="https://render.com/">Render</a> como
+    <a href="https://en.wikipedia.org/wiki/Platform_as_a_service">PaaS</a> donde
+    desplegar y ejecutar nuestro
+    <a href="https://en.wikipedia.org/wiki/Web_service">servicio web</a>.
+  </li>
 </ul>
 
-<p>Puedes encontrar el código de esta guía en <a href="https://github.com/dgraciac/guide-cd-render-docker-based-spring-boot">mi repositorio de GitHub</a>.</p>
+<p>
+  Puedes encontrar el código de esta guía en
+  <a href="https://github.com/dgraciac/guide-cd-render-docker-based-spring-boot"
+    >mi repositorio de GitHub</a
+  >.
+</p>
 
 <h2>Crear un repositorio GitHub donde subir el código</h2>
 
-<p>Empecemos por lo básico. Creamos un repositorio de GitHub donde subir el código de la aplicación.</p>
+<p>
+  Empecemos por lo básico. Creamos un repositorio de GitHub donde subir el
+  código de la aplicación.
+</p>
 
-<p>Generamos una aplicación Spring Boot en <a href="https://start.spring.io/">spring initializr</a> con la siguiente <a href="https://start.spring.io/#!type=gradle-project-kotlin&language=kotlin&platformVersion=3.1.3&packaging=jar&jvmVersion=17&groupId=dgraciac.guides&artifactId=guide-cd-render-docker-based-spring-boot&name=guide-cd-render-docker-based-spring-boot&description=guide-cd-render-docker-based-spring-boot&packageName=dgraciac.guides.guidecdrenderdockerbasedspringboot&dependencies=web,actuator">configuración</a>. Lo descargamos y lo subimos al repositorio de GitHub.</p>
+<p>
+  Generamos una aplicación Spring Boot en
+  <a href="https://start.spring.io/">spring initializr</a> con la siguiente
+  <a
+    href="https://start.spring.io/#!type=gradle-project-kotlin&language=kotlin&platformVersion=3.1.3&packaging=jar&jvmVersion=17&groupId=dgraciac.guides&artifactId=guide-cd-render-docker-based-spring-boot&name=guide-cd-render-docker-based-spring-boot&description=guide-cd-render-docker-based-spring-boot&packageName=dgraciac.guides.guidecdrenderdockerbasedspringboot&dependencies=web,actuator"
+    >configuración</a
+  >. Lo descargamos y lo subimos al repositorio de GitHub.
+</p>
 
 <h2><em>Containerización</em></h2>
 
-<p>Tenemos que <em>containerizar</em> nuestra aplicación para que Render pueda ejecutarla como un contenedor de Docker. Para conseguirlo, necesitamos añadir un fichero Dockerfile apropiado para nuestra aplicación Spring Boot en el directorio raíz del repositorio. El siguiente fichero Dockerfile servirá para alcanzar nuestro objetivo (si estás interesado/a en los detalles de este Dockerfile, puedes consultar la <a href="https://spring.io/guides/topicals/spring-boot-docker/">guía oficial de Spring Boot Docker</a> que he seguido).</p>
+<p>
+  Tenemos que <em>containerizar</em> nuestra aplicación para que Render pueda
+  ejecutarla como un contenedor de Docker. Para conseguirlo, necesitamos añadir
+  un fichero Dockerfile apropiado para nuestra aplicación Spring Boot en el
+  directorio raíz del repositorio. El siguiente fichero Dockerfile servirá para
+  alcanzar nuestro objetivo (si estás interesado/a en los detalles de este
+  Dockerfile, puedes consultar la
+  <a href="https://spring.io/guides/topicals/spring-boot-docker/"
+    >guía oficial de Spring Boot Docker</a
+  >
+  que he seguido).
+</p>
 
 <pre><code class="language-dockerfile">FROM eclipse-temurin:17.0.6_10-jre-jammy
 
@@ -32,9 +92,17 @@ COPY ${JAR_FILE} spring-boot.jar
 ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /spring-boot.jar ${0} ${@}"]
 EXPOSE 8080</code></pre>
 
-<h2>Publicación de una nueva imagen de Docker cuando ocurra un <em>push</em> a la rama principal</h2>
+<h2>
+  Publicación de una nueva imagen de Docker cuando ocurra un <em>push</em> a la
+  rama principal
+</h2>
 
-<p>Ahora que ya tenemos nuestro Dockerfile listo, vamos a publicar una imagen de Docker cada vez que ocurra un <em>push</em> a la rama principal de nuestro repositorio. De eso se va a encargar un <em>workflow</em> de GitHub Actions que situaremos en la ruta «.github/workflows/on-push-to-main.yaml».</p>
+<p>
+  Ahora que ya tenemos nuestro Dockerfile listo, vamos a publicar una imagen de
+  Docker cada vez que ocurra un <em>push</em> a la rama principal de nuestro
+  repositorio. De eso se va a encargar un <em>workflow</em> de GitHub Actions
+  que situaremos en la ruta «.github/workflows/on-push-to-main.yaml».
+</p>
 
 <pre><code class="language-yaml">name: On push to main
 
@@ -91,26 +159,56 @@ jobs:
       - name: Push image with "latest" version
         run: docker push ${{ env.IMAGE_LATEST_URL }}</code></pre>
 
-<p>Subimos este cambio a la rama principal y esto iniciará un <a href="https://github.com/dgraciac/guide-cd-render-docker-based-spring-boot/actions"><em>workflow run</em></a> que publicará una nueva imágen de Docker de la aplicación Spring Boot en el <a href="https://github.com/dgraciac?tab=packages"><em>container registry de nuestra cuenta de GitHub</em></a> con dos etiquetas: «latest» y otra con el <em>commit</em> SHA.</p>
+<p>
+  Subimos este cambio a la rama principal y esto iniciará un
+  <a
+    href="https://github.com/dgraciac/guide-cd-render-docker-based-spring-boot/actions"
+    ><em>workflow run</em></a
+  >
+  que publicará una nueva imágen de Docker de la aplicación Spring Boot en el
+  <a href="https://github.com/dgraciac?tab=packages"
+    ><em>container registry de nuestra cuenta de GitHub</em></a
+  >
+  con dos etiquetas: «latest» y otra con el <em>commit</em> SHA.
+</p>
 
 <h2>Conectar Render a nuestras imágenes de Docker</h2>
 
-<p>Ahora que ya tenemos una URL para nuestras imágenes de Docker, vamos a configurar un servicio web en Render y vamos a conectarlo a «ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:latest».</p>
+<p>
+  Ahora que ya tenemos una URL para nuestras imágenes de Docker, vamos a
+  configurar un servicio web en Render y vamos a conectarlo a
+  «ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:latest».
+</p>
 
 <p>Seleccionamos «Deploy an existing image from a registry».</p>
 
 <figure>
-    <img src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-1.webp" alt="Render">
-    <figcaption>Fig.1 - Desplegando una imágen Docker de un <i>container registry</i></figcaption>
+  <img
+    src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-1.webp"
+    alt="Render"
+  />
+  <figcaption>
+    Fig.1 - Desplegando una imágen Docker de un <i>container registry</i>
+  </figcaption>
 </figure>
 
-<p>En el campo «Image URL» ponemos la URL con la etiqueta «latest»: ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:latest.</p>
+<p>
+  En el campo «Image URL» ponemos la URL con la etiqueta «latest»:
+  ghcr.io/dgraciac/guide-cd-render-docker-based-spring-boot:latest.
+</p>
 
-<p>Si tu repositorio es privado, tu <em>container registry</em> también lo es y tendrás que añadir unas credenciales en tu cuenta de Render para que pueda descargarse las imágenes del <em>container registry</em>.</p>
+<p>
+  Si tu repositorio es privado, tu <em>container registry</em> también lo es y
+  tendrás que añadir unas credenciales en tu cuenta de Render para que pueda
+  descargarse las imágenes del <em>container registry</em>.
+</p>
 
 <figure>
-    <img src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-2.webp" alt="Render">
-    <figcaption>Fig.2 - Configurando la URL de la imágen Docker</figcaption>
+  <img
+    src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-2.webp"
+    alt="Render"
+  />
+  <figcaption>Fig.2 - Configurando la URL de la imágen Docker</figcaption>
 </figure>
 
 <p>Elegimos nombre del servicio web, región geográfica e «Instance Type».</p>
@@ -118,33 +216,73 @@ jobs:
 <p>En la sección «Advanced»,</p>
 
 <ul>
-  <li>añadimos una variable de entorno «PORT» (reservada por Render) con el valor «8080» para decirle a Render que redirija las peticiones que llegan al servicio web al puerto 8080 del contenedor Docker donde se está ejecutando la aplicación Spring Boot (Spring Boot escucha el puerto 8080 por defecto).</li>
+  <li>
+    añadimos una variable de entorno «PORT» (reservada por Render) con el valor
+    «8080» para decirle a Render que redirija las peticiones que llegan al
+    servicio web al puerto 8080 del contenedor Docker donde se está ejecutando
+    la aplicación Spring Boot (Spring Boot escucha el puerto 8080 por defecto).
+  </li>
   <li>en el campo «Health Check Path» añadimos «/actuator/health»</li>
 </ul>
 
 <p>Por último, creamos el servicio web.</p>
 
 <figure>
-    <img src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-3.webp" alt="Render">
-    <figcaption>Fig.3 - Configuración avanzada de un servicio web en Render</figcaption>
+  <img
+    src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-3.webp"
+    alt="Render"
+  />
+  <figcaption>
+    Fig.3 - Configuración avanzada de un servicio web en Render
+  </figcaption>
 </figure>
 
-<p>Al cabo de unos minutos, el servicio web estará disponible en «https://guide-cd-render-docker-based-spring-boot.onrender.com». Para comprobar que la aplicación Spring Boot es accesible públicamente, pega esta URL en tu navegador: <a href="https://guide-cd-render-docker-based-spring-boot.onrender.com/actuator/health">https://guide-cd-render-docker-based-spring-boot.onrender.com/actuator/health</a>. Si todo ha ido bien, deberías ver el siguiente mensaje: <code>{"status":"UP","groups":["liveness","readiness"]}</code></p>
+<p>
+  Al cabo de unos minutos, el servicio web estará disponible en
+  «https://guide-cd-render-docker-based-spring-boot.onrender.com». Para
+  comprobar que la aplicación Spring Boot es accesible públicamente, pega esta
+  URL en tu navegador:
+  <a
+    href="https://guide-cd-render-docker-based-spring-boot.onrender.com/actuator/health"
+    >https://guide-cd-render-docker-based-spring-boot.onrender.com/actuator/health</a
+  >. Si todo ha ido bien, deberías ver el siguiente mensaje:
+  <code>{"status":"UP","groups":["liveness","readiness"]}</code>
+</p>
 
-<p>Ahora ya podemos deplegar manualmente la versión «latest» de nuestra aplicación Spring Boot desde el <em>dashboard</em> de Render.</p>
+<p>
+  Ahora ya podemos deplegar manualmente la versión «latest» de nuestra
+  aplicación Spring Boot desde el <em>dashboard</em> de Render.
+</p>
 
 <figure>
-    <img src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-4.webp" alt="Render">
-    <figcaption>Fig.4 - Panel de control de un servicio web en Render</figcaption>
+  <img
+    src="/article/despliegue-continuo-en-render-de-una-aplicacion-spring-boot/images/render-4.webp"
+    alt="Render"
+  />
+  <figcaption>Fig.4 - Panel de control de un servicio web en Render</figcaption>
 </figure>
 
-<p>Pero lo que realmente nos va a facilitar la vida es que nuestro servicio web se despliegue automáticamente cada vez que se publique una nueva imágen Docker de la aplicación. Es decir, despliegue continuo.</p>
+<p>
+  Pero lo que realmente nos va a facilitar la vida es que nuestro servicio web
+  se despliegue automáticamente cada vez que se publique una nueva imágen Docker
+  de la aplicación. Es decir, despliegue continuo.
+</p>
 
 <h2>Despliegue continuo</h2>
 
-<p>Para configurar el despliegue continuo vamos a usar el <a href="https://render.com/docs/deploy-an-image#deploy-via-webhook"><em>webhook</em></a> que nos ofrece Render para iniciar un nuevo despliegue.</p>
+<p>
+  Para configurar el despliegue continuo vamos a usar el
+  <a href="https://render.com/docs/deploy-an-image#deploy-via-webhook"
+    ><em>webhook</em></a
+  >
+  que nos ofrece Render para iniciar un nuevo despliegue.
+</p>
 
-<p>Tenemos que añadir un paso más al final de nuestro <em>workflow</em> de GitHub para que llame al <em>webhook</em> con la URL de la imagen Docker que tiene la etiqueta <em>commit</em> SHA (tiene que ser URL <em>encoded</em>).</p>
+<p>
+  Tenemos que añadir un paso más al final de nuestro <em>workflow</em> de GitHub
+  para que llame al <em>webhook</em> con la URL de la imagen Docker que tiene la
+  etiqueta <em>commit</em> SHA (tiene que ser URL <em>encoded</em>).
+</p>
 
 <pre><code class="language-yaml">- name: Trigger deploy in Render
   run: |
@@ -155,11 +293,27 @@ jobs:
     exit 1
     fi</code></pre>
 
-<p>Las opciones que se pasan al comando curl sirven para codificar la URL que añadimos al <em>query string</em> y poder obtener el código de respuesta para hacer fallar el <em>workflow</em> en caso de que Render nos conteste con un error.</p>
+<p>
+  Las opciones que se pasan al comando curl sirven para codificar la URL que
+  añadimos al <em>query string</em> y poder obtener el código de respuesta para
+  hacer fallar el <em>workflow</em> en caso de que Render nos conteste con un
+  error.
+</p>
 
-<p>Solo falta mantener la URL del <em>webhook</em> en secreto para evitar riesgos. Así que creamos un secreto «RENDER_DEPLOY_WEBHOOK» en nuestro repositorio de GitHub (ver <a href="https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions">documentación oficial</a>).</p>
+<p>
+  Solo falta mantener la URL del <em>webhook</em> en secreto para evitar
+  riesgos. Así que creamos un secreto «RENDER_DEPLOY_WEBHOOK» en nuestro
+  repositorio de GitHub (ver
+  <a
+    href="https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions"
+    >documentación oficial</a
+  >).
+</p>
 
-<p>En mi caso, también añado esto al <em>job</em> del <em>workflow</em> porque he configurado el secreto como un secreto del entorno de producción.</p>
+<p>
+  En mi caso, también añado esto al <em>job</em> del <em>workflow</em> porque he
+  configurado el secreto como un secreto del entorno de producción.
+</p>
 
 <pre><code class="language-yaml">environment:
   name: production
