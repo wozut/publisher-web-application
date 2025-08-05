@@ -5,3 +5,4 @@
 - UX: editar un artículo (con persistencia y editor slate.js)
 - Terminar página web y design system minimum
 - Integraciones con redes sociales y plataformas.
+- deploy on render
