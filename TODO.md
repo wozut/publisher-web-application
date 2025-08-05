@@ -1,0 +1,7 @@
+- Añadir atributo "culture" (locale) a Article.
+- No intentar "localizar" de forma automática, responsabilidad del escritor.
+- Modelar: Un artículo <-> muchas "localizaciones"
+- Publicarlo (después de convertir formato) en una red social.
+- UX: editar un artículo (con persistencia y editor slate.js)
+- Terminar página web y design system minimum
+- Integraciones con redes sociales y plataformas.
