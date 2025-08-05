@@ -23,9 +23,15 @@ describe("article collection", () => {
     });
   });
 
-  test("ensure pathToContent points to valid paths", () => {
+  test("ensure pathToMarkdownContent points to valid paths", () => {
     articles.forEach((article) => {
-      expect(article.pathToContent).toMatch(/^\/.*\/.*\.md$/);
+      expect(article.pathToMarkdownContent).toMatch(/^\/.*\/.*\.md$/);
+    });
+  });
+
+  test("ensure pathToHtmlContent points to valid paths", () => {
+    articles.forEach((article) => {
+      expect(article.pathToHtmlContent).toMatch(/^\/.*\/.*\.html$/);
     });
   });
 });
