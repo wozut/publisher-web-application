@@ -1,3 +1,7 @@
+- Conversor simple que convierte entre formatos de texto. Por ejemplo, de Markdown a HTML, de Common Mark a GFM, de HTML a LinkedIn format, de Markdown a Medium format, etc.
+  - El objetivo es ayudar a profesionales influyentes del sector tech a publicar en la mayor cantidad de plataformas y redes sociales con la menor fricción posible.
+  - Las conversiones las hace el web-service.
+
 - Añadir atributo "culture" (locale) a Article.
 - No intentar "localizar" de forma automática, responsabilidad del escritor.
 - Modelar: Un artículo <-> muchas "localizaciones"
