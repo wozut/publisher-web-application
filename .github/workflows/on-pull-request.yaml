@@ -23,7 +23,7 @@ jobs:
         node-version: [22.18.0]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -80,7 +80,7 @@ jobs:
   #        node-version: [22.13.1]
   #
   #    steps:
-  #      - uses: actions/checkout@v4
+  #      - uses: actions/checkout@v5
   #
   #      # - name: Start services
   #      # run: docker-compose up -d
@@ -157,7 +157,7 @@ jobs:
         node-version: [22.18.0]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -175,7 +175,7 @@ jobs:
       matrix:
         node-version: [22.18.0]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -194,7 +194,7 @@ jobs:
         node-version: [22.18.0]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -213,7 +213,7 @@ jobs:
 #        node-version: [22.18.0]
 #
 #    steps:
-#      - uses: actions/checkout@v4
+#      - uses: actions/checkout@v5
 #      - name: Use Node.js ${{ matrix.node-version }}
 #        uses: actions/setup-node@v4
 #        with:
