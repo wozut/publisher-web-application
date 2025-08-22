@@ -2,6 +2,10 @@
   - El objetivo es ayudar a profesionales influyentes del sector tech a publicar en la mayor cantidad de plataformas y redes sociales con la menor fricción posible.
   - Las conversiones las hace el web-service.
 
+- Clonar Grammarly: El grammarly español
+
+- Ir publicando en redes sociales el proceso de cómo crear un producto usando la IA lo máximo posible.
+
 - Añadir atributo "culture" (locale) a Article.
 - No intentar "localizar" de forma automática, responsabilidad del escritor.
 - Modelar: Un artículo <-> muchas "localizaciones"
