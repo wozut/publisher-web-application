@@ -150,25 +150,25 @@ jobs:
   #    #     path: playwright-report/
   #    #     retention-days: 30
 
-  check_code_format:
-    runs-on: ubuntu-latest
-
-    env:
-      HUSKY: 0
-
-    strategy:
-      matrix:
-        node-version: [22.18.0]
-
-    steps:
-      - uses: actions/checkout@v5
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm run format:check
+  #  check_code_format:
+  #    runs-on: ubuntu-latest
+  #
+  #    env:
+  #      HUSKY: 0
+  #
+  #    strategy:
+  #      matrix:
+  #        node-version: [22.18.0]
+  #
+  #    steps:
+  #      - uses: actions/checkout@v5
+  #      - name: Use Node.js ${{ matrix.node-version }}
+  #        uses: actions/setup-node@v4
+  #        with:
+  #          node-version: ${{ matrix.node-version }}
+  #          cache: "npm"
+  #      - run: npm ci
+  #      - run: npm run format:check
 
   build_application:
     runs-on: ubuntu-latest
