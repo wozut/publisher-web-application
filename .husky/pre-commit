@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Pre-commit hook that formats code before committing
+
+echo "🎨 Formatting code before commit..."
+prettier $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --write --ignore-unknown
+git update-index --again
+echo "✅ Code formatting completed"
