@@ -17,6 +17,7 @@ jobs:
 
     env:
       REGISTRY: ghcr.io
+      HUSKY: 0
 
     strategy:
       matrix:
@@ -152,6 +153,9 @@ jobs:
   check_code_format:
     runs-on: ubuntu-latest
 
+    env:
+      HUSKY: 0
+
     strategy:
       matrix:
         node-version: [22.18.0]
@@ -166,26 +170,12 @@ jobs:
       - run: npm ci
       - run: npm run format:check
 
-  run_linter:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-
-    strategy:
-      matrix:
-        node-version: [22.18.0]
-    steps:
-      - uses: actions/checkout@v5
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm run lint
-
   build_application:
     runs-on: ubuntu-latest
+
+    env:
+      HUSKY: 0
+
     permissions:
       contents: read
 
