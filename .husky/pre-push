@@ -56,6 +56,17 @@ if [ "$current_branch" = "$protected_branch" ]; then
     fi
     echo "✅ Branch is up-to-date with remote"
 
+    # Install dependencies
+    echo "📦 Installing dependencies..."
+    if ! npm ci; then
+        echo "❌ Dependency installation failed. Please check your package.json and package-lock.json."
+        end_time=$(date +%s)
+        execution_time=$((end_time - start_time))
+        echo "⏱️  Execution time: $(format_execution_time $execution_time)"
+        exit 1
+    fi
+    echo "✅ Dependencies installed"
+
     # Run build
     echo "🔨 Building application..."
     if ! npm run build; then
