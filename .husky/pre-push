@@ -5,6 +5,8 @@
 # Start timing
 start_time=$(date +%s)
 
+required_node_version="22.21.0"
+
 # Function to format execution time
 format_execution_time() {
     local total_seconds=$1
@@ -56,18 +58,18 @@ if [ "$current_branch" = "$protected_branch" ]; then
     fi
     echo "✅ Branch is up-to-date with remote"
 
-    node -v
-
-    # Use correct Node version
-    echo "🔧 Setting Node version..."
-    if ! nvm use; then
-        echo "❌ Failed to set Node version. Please check your .nvmrc file."
+    # Check Node version
+    echo "🔧 Checking Node version..."
+    current_node_version=$(node -v | sed 's/v//')
+    if [ "$current_node_version" != "$required_node_version" ]; then
+        echo "❌ Node version mismatch. Required: $required_node_version, Current: $current_node_version"
+        echo "   Please run: nvm use $required_node_version"
         end_time=$(date +%s)
         execution_time=$((end_time - start_time))
         echo "⏱️  Execution time: $(format_execution_time $execution_time)"
         exit 1
     fi
-    echo "✅ Node version set"
+    echo "✅ Node version correct ($current_node_version)"
 
     # Install dependencies
     echo "📦 Installing dependencies..."
