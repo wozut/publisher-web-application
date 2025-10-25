@@ -56,6 +56,17 @@ if [ "$current_branch" = "$protected_branch" ]; then
     fi
     echo "✅ Branch is up-to-date with remote"
 
+    # Use correct Node version
+    echo "🔧 Setting Node version..."
+    if ! nvm use; then
+        echo "❌ Failed to set Node version. Please check your .nvmrc file."
+        end_time=$(date +%s)
+        execution_time=$((end_time - start_time))
+        echo "⏱️  Execution time: $(format_execution_time $execution_time)"
+        exit 1
+    fi
+    echo "✅ Node version set"
+
     # Install dependencies
     echo "📦 Installing dependencies..."
     if ! npm ci; then
