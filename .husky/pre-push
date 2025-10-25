@@ -56,6 +56,8 @@ if [ "$current_branch" = "$protected_branch" ]; then
     fi
     echo "✅ Branch is up-to-date with remote"
 
+    node -v
+
     # Use correct Node version
     echo "🔧 Setting Node version..."
     if ! nvm use; then
