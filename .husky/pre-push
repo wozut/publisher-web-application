@@ -5,6 +5,8 @@
 # Start timing
 start_time=$(date +%s)
 
+required_node_version="22.21.0"
+
 # Function to format execution time
 format_execution_time() {
     local total_seconds=$1
@@ -42,7 +44,6 @@ if [ "$current_branch" = "$protected_branch" ]; then
 
     # Check if branch is up-to-date with remote
     echo "🌐 Checking if branch is up-to-date with remote..."
-    git fetch origin "$protected_branch" --quiet
 
     # Check if there are commits on remote that we don't have locally
     behind_count=$(git rev-list --count HEAD..origin/"$protected_branch")
@@ -55,6 +56,30 @@ if [ "$current_branch" = "$protected_branch" ]; then
         exit 1
     fi
     echo "✅ Branch is up-to-date with remote"
+
+    # Check Node version
+    echo "🔧 Checking Node version..."
+    current_node_version=$(node -v | sed 's/v//')
+    if [ "$current_node_version" != "$required_node_version" ]; then
+        echo "❌ Node version mismatch. Required: $required_node_version, Current: $current_node_version"
+        echo "   Please run: nvm use $required_node_version"
+        end_time=$(date +%s)
+        execution_time=$((end_time - start_time))
+        echo "⏱️  Execution time: $(format_execution_time $execution_time)"
+        exit 1
+    fi
+    echo "✅ Node version correct ($current_node_version)"
+
+    # Install dependencies
+    echo "📦 Installing dependencies..."
+    if ! npm ci; then
+        echo "❌ Dependency installation failed. Please check your package.json and package-lock.json."
+        end_time=$(date +%s)
+        execution_time=$((end_time - start_time))
+        echo "⏱️  Execution time: $(format_execution_time $execution_time)"
+        exit 1
+    fi
+    echo "✅ Dependencies installed"
 
     # Run build
     echo "🔨 Building application..."
